@@ -90,6 +90,97 @@ public class GenericEmissionTransitionHelper {
 				
 	}
 	
+	
+	/*
+	 * Emission4alpha
+	 * 
+	 * 
+	 */
+	
+	
+	public static Double Emission4alpha(int studentId, int kc, int T, int I){
+		
+		int Q = 0;
+		double A = 0;
+		
+		
+		Q = Utils.getQuestion(studentId, T);
+		if(I == 0){
+			
+			if(Utils.getAnswer(studentId, Q) == 1){
+				
+				return Utils.getGuessMap(Q);
+			}
+			
+			else{
+				
+				return Operations.substractDouble((double)1, Utils.getGuessMap(Q)).doubleValue();
+			}
+		}
+		
+		else{
+			
+			A = AllOtherMastered4alpha(studentId, Q, kc, T);
+			if(Utils.getAnswer(studentId, Q) == 1){
+				
+				double A_Multiply_OneMinusSlip = Operations.multiplyDouble(A, Operations.substractDouble((double)1, Utils.getSlipMap(Q)));
+				double Guess_multiply_oneMinusA = Operations.multiplyDouble(Utils.getGuessMap(Q), Operations.substractDouble((double)1, A));
+				double add_A_Multiply_OneMinusSlip_Guess_multiply_oneMinusA = Operations.addDouble(A_Multiply_OneMinusSlip, Guess_multiply_oneMinusA);
+				
+				return add_A_Multiply_OneMinusSlip_Guess_multiply_oneMinusA;
+			}
+			
+			else{
+				
+				double A_multiply_Slip = Operations.multiplyDouble(A, Utils.getSlipMap(Q));
+				double oneMinusGuess_multiply_oneMinusA = Operations.multiplyDouble(Operations.substractDouble((double)1, Utils.getGuessMap(Q)), Operations.substractDouble((double)1, A));
+				double add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA = Operations.substractDouble(A_multiply_Slip, oneMinusGuess_multiply_oneMinusA);
+				
+				return add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA;
+			}
+			
+		}
+		
+		
+	}
+	
+	
+	
+public static Double AllOtherMastered4alpha(int studentId, int Q, int kc, int T){
+		
+		double result = 1;
+		
+		ArrayList<Integer> kcList = Utils.getQMatrixMap(Q);
+		for (int KcIndex = 0; KcIndex < kcList.size(); KcIndex++) {
+			int OtherK = kcList.get(KcIndex);
+			if(OtherK != kc){
+				double mastered4alpha = Mastered4alpha(studentId, OtherK, T);
+				result = Operations.multiplyDouble(result, mastered4alpha).doubleValue();
+			}
+			
+		}
+		return result;
+		
+	}
+
+public static Double Mastered4alpha(int studentId, int OtherK, int T){
+	
+	double resultMastered4alpha = 0;
+	
+	double numerator = AlphaHelperFunction.Alpha2(studentId, OtherK, T, 1);
+	double denominatorPart1 = AlphaHelperFunction.Alpha2(studentId, OtherK, T, 1);
+	double denominatorPart2 = AlphaHelperFunction.Alpha2(studentId, OtherK, T, 0);
+	double denominatorFinal = Operations.addDouble(denominatorPart1, denominatorPart2);
+	
+	resultMastered4alpha = Operations.divideDouble(numerator, denominatorFinal);
+	
+	return resultMastered4alpha;
+	
+}
+
+
+
+	
 	public static Double Transition(int studentId, int kc, int T, int I, int J){
 		
 		double L = 0;

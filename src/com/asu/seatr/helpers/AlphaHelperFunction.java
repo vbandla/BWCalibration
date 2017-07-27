@@ -41,7 +41,7 @@ public class AlphaHelperFunction {
 		
 		else{
 			
-			emission = Emission(studentId, kc, T, I);
+			emission = GenericEmissionTransitionHelper.Emission4alpha(studentId, kc, T, I);
 			alpha2 = Alpha2(studentId, kc, T, I);
 			
 			return Operations.multiplyDouble(emission, alpha2).doubleValue();

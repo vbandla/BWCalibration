@@ -35,7 +35,7 @@ public static Double BetaCalc(int studentId, int kc, int T, int I){
 	
 	else{
 		
-		betaCalc = ((Beta(studentId,kc,T+1,0) * GenericEmissionTransitionHelper.Transition(studentId,kc,T,I,0) * Emission(studentId,kc,T+1,0)) + (Beta(studentId,kc,T+1,1) * GenericEmissionTransitionHelper.Transition(studentId,kc,T,I,1) * Emission(studentId,kc,T+1,1))) ;
+		betaCalc = ((Beta(studentId,kc,T+1,0) * GenericEmissionTransitionHelper.Transition(studentId,kc,T,I,0) * GenericEmissionTransitionHelper.Emission4beta(studentId, kc, T, I)) + (Beta(studentId,kc,T+1,1) * GenericEmissionTransitionHelper.Transition(studentId,kc,T,I,1) * GenericEmissionTransitionHelper.Emission4beta(studentId,kc,T+1,1))) ;
 	}
 	return betaCalc;
 	
