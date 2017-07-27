@@ -61,9 +61,10 @@ public class GenericEmissionTransitionHelper {
 	public static Double AllOtherMastered4beta(int studentId, int Q, int kc, int T){
 		
 		double result = 1;
+		
 		ArrayList<Integer> kcList = Utils.getQMatrixMap(Q);
 		for (int KcIndex = 0; KcIndex < kcList.size(); KcIndex++) {
-			double OtherK = kcList.get(KcIndex);
+			int OtherK = kcList.get(KcIndex);
 			if(OtherK != kc){
 				double mastered4beta = Mastered4beta(studentId, OtherK, T);
 				result = Operations.multiplyDouble(result, mastered4beta).doubleValue();
@@ -76,9 +77,18 @@ public class GenericEmissionTransitionHelper {
 	
 	public static Double Mastered4beta(int studentId, int OtherK, int T){
 		
+		double resultMastered4beta = 0;
 		
+		double numeratorBeta  = BetaHelperFunction.Beta(studentId, OtherK, T, 1);  
+		double denominatorPart1 = Operations.multiplyDouble(BetaHelperFunction.Beta(studentId, OtherK, T, 1), Utils.getInitialMasteryMap(OtherK));
+		double denominatorPart2 = Operations.multiplyDouble(BetaHelperFunction.Beta(studentId, OtherK, T, 0), Operations.substractDouble((double)1 , Utils.getInitialMasteryMap(OtherK)));
+		double denominatorFinal = Operations.addDouble(denominatorPart1, denominatorPart2);
+		
+		resultMastered4beta = Operations.divideDouble(numeratorBeta, denominatorFinal);
+		return resultMastered4beta;
+		
+				
 	}
-	
 	
 	public static Double Transition(int studentId, int kc, int T, int I, int J){
 		
