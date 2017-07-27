@@ -50,6 +50,21 @@ public class Utils {
 
 	// Datastructure to implement BACKWARD
 	static HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> backward_outerStudentKcMap = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
+	
+	
+	//Data structure to implement fetch_alpha
+	
+	static HashMap<Integer, Double> fetch_alpha_inner_I_stateMap = new HashMap<Integer, Double>();
+	static HashMap<Integer, HashMap<Integer, Double>> fetch_alpha_innerAttempt_T_Map = new HashMap<Integer, HashMap<Integer, Double>>();
+	static HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> fetch_alpha_innerKc_K_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
+	static HashMap<Integer, HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>> fetch_alpha_outerStudentId_S_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>>();
+	
+	//Data structure to implement fetch_alpha2
+	
+	static HashMap<Integer, Double> fetch_alpha2_inner_I_stateMap = new HashMap<Integer, Double>();
+	static HashMap<Integer, HashMap<Integer, Double>> fetch_alpha2_innerAttempt_T_Map = new HashMap<Integer, HashMap<Integer, Double>>();
+	static HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> fetch_alpha2_innerKc_K_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
+	static HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> fetch_alpha2_outerStudentId_S_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
 
 	/*
 	 * Students List
@@ -308,6 +323,43 @@ public class Utils {
 		return best_outerStudentKcMap.get(S).get(K).get(A);
 	}
 
+	/*
+	 * fetch_alpha
+	 */
+	public static void updateFetchAlpha(int S, int K, int T, int I, Double alpha) {
+		System.out.println(" S:"+S+" K:"+K+" T"+T+" alpha"+alpha);
+		fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).put(I, alpha);
+	}
+
+	public static Double getFetchAlpha(int S, int K, int T, int I) {
+		return fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).get(I);
+	}
+	
+	/*
+	 * fetch_alpha2
+	 */
+	public static void updateFetchAlpha2(int S, int K, int T, int I, Double alpha) {
+		System.out.println(" S:"+S+" K:"+K+" T"+T+" alpha"+alpha);
+		fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).put(I, alpha);
+	}
+
+	public static Double getFetchAlpha2(int S, int K, int T, int I) {
+		return fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).get(I);
+	}
+	
+	
+	/*
+	 * fetch_beta
+	 */
+	public static void updateFetchBeta(int S, int K, int T, int I, Double beta) {
+		System.out.println(" S:"+S+" K:"+K+" T"+T+" beta"+beta);
+		fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).put(I, beta);
+	}
+
+	public static Double getFetchBeta(int S, int K, int T, int I) {
+		return fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).get(I);
+	}
+	
 	//****************************************** SIMULATION**************************************************
 	// Datastructure to implement Competence
 	static HashMap<Integer, HashMap<Integer, Double>> competence_Map = new HashMap<Integer, HashMap<Integer, Double>>();
