@@ -66,6 +66,12 @@ public class Utils {
 	static HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> fetch_alpha2_innerKc_K_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
 	static HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> fetch_alpha2_outerStudentId_S_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
 
+	//Data structure to implement fetch_best
+	
+		static HashMap<Integer, Double> fetch_best_innerAttempt_T_Map = new HashMap<Integer, Double>();
+		static HashMap<Integer, HashMap<Integer, Double>> fetch_best_innerKc_K_Map = new HashMap<Integer, HashMap<Integer, Double>>();
+		static HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> fetch_best_outerStudentId_S_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
+		
 	/*
 	 * Students List
 	 */
@@ -359,6 +365,20 @@ public class Utils {
 	public static Double getFetchBeta(int S, int K, int T, int I) {
 		return fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).get(I);
 	}
+	
+	/*
+	 * fetch_best
+	 */
+	
+	public static void updateFetchBest(int S, int K, int T, Double best) {
+		System.out.println(" S:"+S+" K:"+K+" T"+T+" best"+best);
+		fetch_best_outerStudentId_S_Map.get(S).get(K).put(T, best);
+	}
+	
+	public static Double getFetchBest(int S, int K, int T) {
+		return fetch_best_outerStudentId_S_Map.get(S).get(K).get(T);
+	}
+	
 	
 	//****************************************** SIMULATION**************************************************
 	// Datastructure to implement Competence
