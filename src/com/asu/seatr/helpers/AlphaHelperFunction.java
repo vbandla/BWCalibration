@@ -44,7 +44,7 @@ public class AlphaHelperFunction {
 			emission = Emission(studentId, kc, T, I);
 			alpha2 = Alpha2(studentId, kc, T, I);
 			
-			return Operations.multiplyDouble(emission, alpha2);
+			return Operations.multiplyDouble(emission, alpha2).doubleValue();
 			
 		}
 	}
