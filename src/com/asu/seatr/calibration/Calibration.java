@@ -41,17 +41,13 @@ public class Calibration {
 	static Double Random_S;
 	static Double Random_G;
 
-	private static Double climbOnce() {
+	private static Double climbOnce() throws FileNotFoundException {
 		// System.out.println("CLIMBONCE****************************** ");
 		saveParameters();
-		try {
-			FillingForward.fillingForward();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		FillingBackward.fillingBackward();
-		EstimateKcMastery.Estimate_KC_mastery_Best(total_students, total_KCs);
+		FillAlpha.fillAlpha();
+		FillBeta.fillBeta();
+		FillBest.fillBest();
+//		EstimateKcMastery.Estimate_KC_mastery_Best();
 		calculateNewParameters();// update initalMaster,Learn,slip,guess
 		Double change = changeInParameter();
 		System.out.println("CHANGE******************************   " + change);
@@ -59,9 +55,9 @@ public class Calibration {
 	}
 
 	private static void calculateNewParameters() {
-		SlipsAndGuesses.updateSlipnGuesses();
-		Learn.updateLearn();
-		InitalMastery.updateIntialMastery();
+		EstimateSlipAndGuess.estimateSlipAndGuess();
+		EstimateTransition.estimateTransition();
+		EstimateInitialMastery.estimateIntialMastery();
 	}
 
 	private static Double changeInParameter() {
