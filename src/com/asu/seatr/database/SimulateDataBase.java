@@ -38,7 +38,7 @@ public class SimulateDataBase {
 			Utils.setClassIdQuestion(q, q);
 			// Q KC
 			int n_KCs = r.nextInt((GlobalConstants.total_KCs - 1) + 1) + 1;
-			//System.out.println("setQuestionMatrix  n_KCs: "+n_KCs);
+			System.out.println("setQuestionMatrix  n_KCs: "+n_KCs);
 			for (int j = 0; j < n_KCs; j++) {
 				int kc = r.nextInt(((GlobalConstants.total_KCs - 1) - 0) + 1) + 0;
 				Utils.setQuestionMatrix(q, kc);
@@ -75,7 +75,7 @@ public class SimulateDataBase {
 		}
 		
 		
-		// ************** MAP - S K A ***************************
+/*		// ************** MAP - S K A ***************************
 		for (int St = 0; St < GlobalConstants.total_Students; St++) {
 			int S = Utils.getStudent(St);
 			HashMap<Integer, HashMap<Integer, Double>> inner_KcA_Forward_Map = new HashMap<Integer, HashMap<Integer, Double>>();
@@ -91,8 +91,47 @@ public class SimulateDataBase {
 				inner_KcA_Best_Map.put(Kc, inner_AV_Best_Map);
 			}
 			Utils.initalizeForwardBackwardBestMap(S, inner_KcA_Forward_Map, inner_KcA_Backward_Map, inner_KcA_Best_Map);
-		}
+		}*/
 
+		
+		
+		// ************** MAP - S K T I ***************************
+		for (int St = 0; St < GlobalConstants.total_Students; St++) {
+			int S = Utils.getStudent(St);
+			HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> inner_KcTI_Alpha_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
+			HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> inner_KcTI_Alpha2_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
+			HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> inner_KcTI_Beta_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
+			HashMap<Integer, HashMap<Integer, Double>> inner_KcT_Best_Map = new HashMap<Integer, HashMap<Integer, Double>>();
+			for (int K = 0; K < GlobalConstants.total_KCs; K++) {
+				int Kc = Utils.getKc(K);
+				HashMap<Integer, HashMap<Integer, Double>> inner_TI_Alpha_Map = new HashMap<Integer, HashMap<Integer, Double>>();
+				HashMap<Integer, HashMap<Integer, Double>> inner_TI_Alpha2_Map = new HashMap<Integer, HashMap<Integer, Double>>();
+				HashMap<Integer, HashMap<Integer, Double>> inner_TI_Beta_Map = new HashMap<Integer, HashMap<Integer, Double>>();
+				HashMap<Integer, Double> inner_TI_Best_Map = new HashMap<Integer, Double>();
+				
+				
+				
+				for (int T = 1; T <= Utils.getLast(S); T++) {
+					HashMap<Integer, Double> inner_I_Alpha_Map = new HashMap<Integer, Double>();
+					HashMap<Integer, Double> inner_I_Alpha2_Map = new HashMap<Integer, Double>();
+					HashMap<Integer, Double> inner_I_Beta_Map = new HashMap<Integer, Double>();
+				
+					
+					inner_TI_Alpha_Map.put(T, inner_I_Alpha_Map);
+					inner_TI_Alpha2_Map.put(T, inner_I_Alpha2_Map);
+					inner_TI_Beta_Map.put(T, inner_I_Beta_Map);
+					
+				}
+				inner_KcTI_Alpha_Map.put(Kc, inner_TI_Alpha_Map);
+				inner_KcTI_Alpha2_Map.put(Kc, inner_TI_Alpha2_Map);
+				inner_KcTI_Beta_Map.put(Kc, inner_TI_Beta_Map);
+				inner_KcT_Best_Map.put(Kc, inner_TI_Best_Map);
+				
+			}
+			Utils.initalizeAlphaAlpha2BetaBestMap(S, inner_KcTI_Alpha_Map, inner_KcTI_Alpha2_Map, inner_KcTI_Beta_Map, inner_KcT_Best_Map);
+		}
+		
+		
 		// ************** MAP - S K COMPETENCE ***************************
 		for (int St = 0; St < GlobalConstants.total_Students; St++) {
 			int S = Utils.getStudent(St);

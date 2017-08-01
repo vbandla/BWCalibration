@@ -27,8 +27,8 @@ public class FillAlpha {
 				Utils.updateFetchAlpha2(S, innerKc, 1, 1, Utils.getInitialMasteryMap(innerKc));
 				Utils.updateFetchAlpha2(S, innerKc, 1, 0, Operations.substractDouble((double) 1, Utils.getInitialMasteryMap(innerKc)));
 				
-				Utils.updateFetchAlpha(S, innerKc, 0, 1, Utils.getInitialMasteryMap(innerKc));
-				Utils.updateFetchAlpha(S, innerKc, 0, 0, Operations.substractDouble((double) 1, Utils.getInitialMasteryMap(innerKc)));
+				Utils.updateFetchAlpha(S, innerKc, 1, 1, Utils.getInitialMasteryMap(innerKc));
+				Utils.updateFetchAlpha(S, innerKc, 1, 0, Operations.substractDouble((double) 1, Utils.getInitialMasteryMap(innerKc)));
 			}
 			
 			for (int T = 1; T <= Utils.getLast(S); T++) {

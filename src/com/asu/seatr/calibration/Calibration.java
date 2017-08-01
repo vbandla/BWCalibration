@@ -317,7 +317,7 @@ public class Calibration {
 
 		// MySQLConnection.SetConnection();
 		System.out.println("CALIBRATION.....................");
-		PrintStream o = new PrintStream(new File("C:/Users/lkusnoor/Downloads/RA/CALIB.txt"));
+		PrintStream o = new PrintStream(new File("C:/Users/bandl/Downloads/CalibrationTest/CALIB.txt"));
 		System.setOut(o);
 		// SetDB
 		// setDatabase();

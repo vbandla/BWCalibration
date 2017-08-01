@@ -64,13 +64,21 @@ public class Utils {
 	static HashMap<Integer, Double> fetch_alpha2_inner_I_stateMap = new HashMap<Integer, Double>();
 	static HashMap<Integer, HashMap<Integer, Double>> fetch_alpha2_innerAttempt_T_Map = new HashMap<Integer, HashMap<Integer, Double>>();
 	static HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> fetch_alpha2_innerKc_K_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
-	static HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> fetch_alpha2_outerStudentId_S_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
+	static HashMap<Integer, HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>> fetch_alpha2_outerStudentId_S_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>>();
 
+	
+	//Data structure to implement fetch_beta
+	
+	static HashMap<Integer, Double> fetch_beta_inner_I_stateMap = new HashMap<Integer, Double>();
+	static HashMap<Integer, HashMap<Integer, Double>> fetch_beta_innerAttempt_T_Map = new HashMap<Integer, HashMap<Integer, Double>>();
+	static HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> fetch_beta_innerKc_K_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
+	static HashMap<Integer, HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>> fetch_beta_outerStudentId_S_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>>();
+	
 	//Data structure to implement fetch_best
 	
-		static HashMap<Integer, Double> fetch_best_innerAttempt_T_Map = new HashMap<Integer, Double>();
-		static HashMap<Integer, HashMap<Integer, Double>> fetch_best_innerKc_K_Map = new HashMap<Integer, HashMap<Integer, Double>>();
-		static HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> fetch_best_outerStudentId_S_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
+	static HashMap<Integer, Double> fetch_best_innerAttempt_T_Map = new HashMap<Integer, Double>();
+	static HashMap<Integer, HashMap<Integer, Double>> fetch_best_innerKc_K_Map = new HashMap<Integer, HashMap<Integer, Double>>();
+	static HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> fetch_best_outerStudentId_S_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
 		
 	/*
 	 * Students List
@@ -288,6 +296,18 @@ public class Utils {
 		backward_outerStudentKcMap.put(S, inner_KcA_Backward_Map);
 		best_outerStudentKcMap.put(S, inner_KcA_Best_Map);
 	}
+	
+	
+	public static void initalizeAlphaAlpha2BetaBestMap(int S,
+			HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> inner_KcTI_Alpha_Map,
+			HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> inner_KcTI_Alpha2_Map,
+			HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> inner_KcTI_Beta_Map,
+			HashMap<Integer, HashMap<Integer, Double>> inner_KcT_Best_Map) {
+		fetch_alpha_outerStudentId_S_Map.put(S, inner_KcTI_Alpha_Map);
+		fetch_alpha2_outerStudentId_S_Map.put(S, inner_KcTI_Alpha2_Map);
+		fetch_beta_outerStudentId_S_Map.put(S, inner_KcTI_Beta_Map);
+		fetch_best_outerStudentId_S_Map.put(S, inner_KcT_Best_Map);
+	}
 
 	/*
 	 * Forward
@@ -345,7 +365,7 @@ public class Utils {
 	 * fetch_alpha2
 	 */
 	public static void updateFetchAlpha2(int S, int K, int T, int I, Double alpha) {
-		System.out.println(" S:"+S+" K:"+K+" T"+T+" alpha"+alpha);
+		System.out.println(" S: "+S+" K: "+K+" T "+T+" alpha "+alpha);
 		fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).put(I, alpha);
 	}
 
@@ -359,11 +379,11 @@ public class Utils {
 	 */
 	public static void updateFetchBeta(int S, int K, int T, int I, Double beta) {
 		System.out.println(" S:"+S+" K:"+K+" T"+T+" beta"+beta);
-		fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).put(I, beta);
+		fetch_beta_outerStudentId_S_Map.get(S).get(K).get(T).put(I, beta);
 	}
 
 	public static Double getFetchBeta(int S, int K, int T, int I) {
-		return fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).get(I);
+		return fetch_beta_outerStudentId_S_Map.get(S).get(K).get(T).get(I);
 	}
 	
 	/*
