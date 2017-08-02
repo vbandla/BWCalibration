@@ -38,7 +38,6 @@ public class SimulateDataBase {
 			Utils.setClassIdQuestion(q, q);
 			// Q KC
 			int n_KCs = r.nextInt((GlobalConstants.total_KCs - 1) + 1) + 1;
-			System.out.println("setQuestionMatrix  n_KCs: "+n_KCs);
 			for (int j = 0; j < n_KCs; j++) {
 				int kc = r.nextInt(((GlobalConstants.total_KCs - 1) - 0) + 1) + 0;
 				Utils.setQuestionMatrix(q, kc);

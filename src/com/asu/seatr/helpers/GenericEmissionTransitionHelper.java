@@ -21,7 +21,7 @@ public class GenericEmissionTransitionHelper {
 		Q = Utils.getQuestion(studentId, T);
 		if(I == 0){
 			
-			if(Utils.getAnswer(studentId, Q) == 1){
+			if(Utils.simulategetSetAnswer(studentId, Q) == 1){
 				
 				return Utils.getGuessMap(Q);
 			}
@@ -35,7 +35,7 @@ public class GenericEmissionTransitionHelper {
 		else{
 			
 			A = AllOtherMastered4beta(studentId, Q, kc, T);
-			if(Utils.getAnswer(studentId, Q) == 1){
+			if(Utils.simulategetSetAnswer(studentId, Q) == 1){
 				
 				double A_Multiply_OneMinusSlip = Operations.multiplyDouble(A, Operations.substractDouble((double)1, Utils.getSlipMap(Q)));
 				double Guess_multiply_oneMinusA = Operations.multiplyDouble(Utils.getGuessMap(Q), Operations.substractDouble((double)1, A));
@@ -62,7 +62,7 @@ public class GenericEmissionTransitionHelper {
 		
 		double result = 1;
 		
-		ArrayList<Integer> kcList = Utils.getQMatrixMap(Q);
+		ArrayList<Integer> kcList = Utils.getQuestionMatrix(Q);
 		for (int KcIndex = 0; KcIndex < kcList.size(); KcIndex++) {
 			int OtherK = kcList.get(KcIndex);
 			if(OtherK != kc){
@@ -107,7 +107,7 @@ public class GenericEmissionTransitionHelper {
 		Q = Utils.getQuestion(studentId, T);
 		if(I == 0){
 			
-			if(Utils.getAnswer(studentId, Q) == 1){
+			if(Utils.simulategetSetAnswer(studentId, Q) == 1){
 				
 				return Utils.getGuessMap(Q);
 			}
@@ -121,7 +121,7 @@ public class GenericEmissionTransitionHelper {
 		else{
 			
 			A = AllOtherMastered4alpha(studentId, Q, kc, T);
-			if(Utils.getAnswer(studentId, Q) == 1){
+			if(Utils.simulategetSetAnswer(studentId, Q) == 1){
 				
 				double A_Multiply_OneMinusSlip = Operations.multiplyDouble(A, Operations.substractDouble((double)1, Utils.getSlipMap(Q)));
 				double Guess_multiply_oneMinusA = Operations.multiplyDouble(Utils.getGuessMap(Q), Operations.substractDouble((double)1, A));
@@ -150,7 +150,10 @@ public static Double AllOtherMastered4alpha(int studentId, int Q, int kc, int T)
 		
 		double result = 1;
 		
-		ArrayList<Integer> kcList = Utils.getQMatrixMap(Q);
+		ArrayList<Integer> kcList = Utils.getQuestionMatrix(Q);
+		if(kcList == null){
+			System.out.println(" kcList is null ");
+		}
 		for (int KcIndex = 0; KcIndex < kcList.size(); KcIndex++) {
 			int OtherK = kcList.get(KcIndex);
 			if(OtherK != kc){
@@ -200,7 +203,7 @@ public static Double Mastered4alpha(int studentId, int OtherK, int T){
 		else{
 			
 			learn = Utils.getLearnMap(kc);
-			lengthOfQmatrix = Utils.getQMatrixMap(Utils.getQuestion(studentId, T)).size();
+			lengthOfQmatrix = Utils.getQuestionMatrix(Utils.getQuestion(studentId, T)).size();
 			
 			L = Operations.divideDouble(learn, lengthOfQmatrix).doubleValue();
 			

@@ -109,8 +109,7 @@ public class Utils {
 	public static void setQuestionMatrix(int mQuestion, int kc) {
 		ArrayList<Integer> list = qMatrix_map.get(mQuestion);
 		// System.out.println();
-		// System.out.println("setQuestionMatrix :"+mQuestion+" : "+kc+" :
-		// "+list);
+		// System.out.println("setQuestionMatrix :"+mQuestion+" : "+kc+" : " +list);
 		if (list == null) {
 			list = new ArrayList<Integer>();
 			list.add(kc);
@@ -118,10 +117,12 @@ public class Utils {
 			list.add(kc);
 		}
 		qMatrix_map.put(mQuestion, list);
-		// System.out.println("count :"+qMatrix_map.size());
+		//System.out.println("setQuestionMatrix :"+mQuestion+" : "+kc+" : " +list);
+		//System.out.println("count :"+qMatrix_map.size());
 	}
 
 	public static ArrayList<Integer> getQuestionMatrix(int mQuestion) {
+		//System.out.println(" here in getQuestionMatrix ");
 		ArrayList<Integer> list = qMatrix_map.get(mQuestion);
 		// TODO remove below condition once you match with correct kc from table
 		if (list == null) {
@@ -253,7 +254,7 @@ public class Utils {
 	}
 
 	public static void setQMatrixMap(int question, ArrayList<Integer> list) {
-		// System.out.println("setQMatrixMap :"+question+" "+list);
+		System.out.println("setQMatrixMap :"+question+" "+list);
 		String listString = "";
 		for (Integer kc : list) {
 			listString += kc + "\t";
@@ -264,6 +265,7 @@ public class Utils {
 	public static ArrayList<Integer> getQMatrixMap(int question) {
 		list.clear();
 		String s = Q_QM_Slip_Guess_map.get(question).get(GlobalConstants.QMatrix);
+		System.out.println("string s " + s);
 		String[] arr = s.split("\t");
 		for (int i = 0; i < arr.length; i++) {
 			list.add(Integer.parseInt(arr[i]));
