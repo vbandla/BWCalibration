@@ -110,7 +110,7 @@ public class SimulateDataBase {
 				
 				
 				
-				for (int T = 1; T <= Utils.getLast(S); T++) {
+				for (int T = 0; T <= Utils.getLast(S); T++) {
 					HashMap<Integer, Double> inner_I_Alpha_Map = new HashMap<Integer, Double>();
 					HashMap<Integer, Double> inner_I_Alpha2_Map = new HashMap<Integer, Double>();
 					HashMap<Integer, Double> inner_I_Beta_Map = new HashMap<Integer, Double>();

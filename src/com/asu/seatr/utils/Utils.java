@@ -356,6 +356,9 @@ public class Utils {
 	 */
 	public static void updateFetchAlpha(int S, int K, int T, int I, Double alpha) {
 		System.out.println(" S:"+S+" K:"+K+" T"+T+" alpha"+alpha);
+		if(T == 0){
+			fetch_alpha_outerStudentId_S_Map.get(S).get(K).put(0, fetch_alpha_inner_I_stateMap).put(I, alpha);
+		}
 		fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).put(I, alpha);
 	}
 
