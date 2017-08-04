@@ -25,7 +25,9 @@ public class EstimateInitialMastery {
 				
 				Numerator = Operations.addDouble(Numerator, Utils.getFetchBest(S, Kc, 1));
 				Denominator = Operations.addDouble(Denominator, (double)1);
-			}	
+			}
+			
+			Utils.setInitialMasteryMap(Kc, Operations.divideDouble(Numerator, Denominator));
 		}
 	}
 

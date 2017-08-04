@@ -355,7 +355,7 @@ public class Utils {
 	 * fetch_alpha
 	 */
 	public static void updateFetchAlpha(int S, int K, int T, int I, Double alpha) {
-		System.out.println(" S:"+S+" K:"+K+" T"+T+" alpha: "+alpha);
+		//System.out.println(" S:"+S+" K:"+K+" T"+T+" alpha: "+alpha);
 		if(T == 0){
 			fetch_alpha_outerStudentId_S_Map.get(S).get(K).put(0, fetch_alpha_inner_I_stateMap).put(I, alpha);
 		}
@@ -373,7 +373,7 @@ public class Utils {
 	 * fetch_alpha2
 	 */
 	public static void updateFetchAlpha2(int S, int K, int T, int I, Double alpha) {
-		System.out.println(" S: "+S+" K: "+K+" T "+T+" alpha2: "+alpha);
+		//System.out.println(" S: "+S+" K: "+K+" T "+T+" alpha2: "+alpha);
 		fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).put(I, alpha);
 	}
 
@@ -386,7 +386,7 @@ public class Utils {
 	 * fetch_beta
 	 */
 	public static void updateFetchBeta(int S, int K, int T, int I, Double beta) {
-		System.out.println(" S:"+S+" K:"+K+" T"+T+" beta: "+beta);
+		//System.out.println(" S:"+S+" K:"+K+" T"+T+" beta: "+beta);
 		fetch_beta_outerStudentId_S_Map.get(S).get(K).get(T).put(I, beta);
 	}
 
@@ -399,7 +399,7 @@ public class Utils {
 	 */
 	
 	public static void updateFetchBest(int S, int K, int T, Double best) {
-		System.out.println(" S:"+S+" K:"+K+" T"+T+" best: "+best);
+		//System.out.println(" S:"+S+" K:"+K+" T"+T+" best: "+best);
 		fetch_best_outerStudentId_S_Map.get(S).get(K).put(T, best);
 	}
 	

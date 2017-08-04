@@ -51,7 +51,7 @@ public class EstimateSlipAndGuess {
 						}
 						else{
 							
-							GuessNumerator = Operations.addDouble(GuessNumerator, AllMastered);
+							GuessNumerator = Operations.addDouble(GuessNumerator, Operations.substractDouble((double) 1, AllMastered));
 							
 						}
 					}
