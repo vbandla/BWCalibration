@@ -44,6 +44,11 @@ public class Calibration {
 	private static Double climbOnce() throws FileNotFoundException {
 		// System.out.println("CLIMBONCE****************************** ");
 		saveParameters();
+		
+		Utils.clearMapsofAlphaBetaBest();
+		SimulateDataBase.initalizeAlphaAlpha2BetaBestMapper();
+		
+		
 		FillAlpha.fillAlpha();
 		FillBeta.fillBeta();
 		FillBest.fillBest();
@@ -76,28 +81,28 @@ public class Calibration {
 			Double diff_IM = Operations.substractDouble( Utils.getInitialMasteryMap(Kc),old_initalMastery[K]);
 			// System.out.println("diff_IM :"+diff_IM+" =
 			// "+old_initalMastery[K]+" - "+Utils.getInitialMasteryMap(Kc));
-			System.out.println("old_initalMastery[K] :"+old_initalMastery[K]+"  Utils.getInitialMasteryMap(Kc):"+Utils.getInitialMasteryMap(Kc));
+//			System.out.println("old_initalMastery[K] :"+old_initalMastery[K]+"  Utils.getInitialMasteryMap(Kc):"+Utils.getInitialMasteryMap(Kc));
 			Double denomDiff_IM = Operations.addDouble(old_initalMastery[K], Utils.getInitialMasteryMap(Kc));
 			Double change_IM = Operations.divideDouble(diff_IM,denomDiff_IM );
 			// System.out.println("change_IM :"+change_IM);
 			sum_initalMaster = Operations.addDouble(sum_initalMaster, change_IM);
 			// System.out.println("sum_initalMaster :"+sum_initalMaster);
 
-			System.out.println("old_Learn[K] :"+old_Learn[K]+"  Utils.getLearnMap(Kc) :"+Utils.getLearnMap(Kc));
+//			System.out.println("old_Learn[K] :"+old_Learn[K]+"  Utils.getLearnMap(Kc) :"+Utils.getLearnMap(Kc));
 			Double diff_L = Operations.substractDouble(Utils.getLearnMap(Kc), old_Learn[K]);
 			// System.out.println("diff_L :"+diff_L+" = "+old_Learn[K]+"  "+Utils.getLearnMap(Kc));
 			Double denomDiff_L = Operations.addDouble(old_Learn[K], Utils.getLearnMap(Kc));
 			Double change_L = Operations.divideDouble(diff_L, denomDiff_L);
 			//System.out.println("change_L :"+change_L);
 			sum_Learn = Operations.addDouble(sum_Learn, change_L);
-			System.out.println();
+//			System.out.println();
 		    //System.out.println("sum_Learn = sum_Learn+change_L "+sum_Learn);
 		}
 		
 		for (int Q = 0; Q < total_Q; Q++) {
 			int question = Utils.getQuestion(Q);
 			//System.out.println("sum_slip :"+sum_slip);
-			System.out.println("old_slip[Q] :"+old_slip[Q]+"  Utils.getSlipMap(question) :"+Utils.getSlipMap(question));
+//			System.out.println("old_slip[Q] :"+old_slip[Q]+"  Utils.getSlipMap(question) :"+Utils.getSlipMap(question));
 			Double diff_S = Operations.substractDouble(Utils.getSlipMap(question),old_slip[Q]);
 			//System.out.println(" diff_S :"+ Utils.getSlipMap(question)+"-"+old_slip[Q]+"="+diff_S);
 			Double denomDiff_S = Operations.addDouble(old_slip[Q], Utils.getSlipMap(question));
@@ -106,14 +111,14 @@ public class Calibration {
 			//System.out.println(" change_S = diff_S/denomDiff_S :"+change_S);
 			sum_slip = Operations.addDouble(sum_slip, change_S);
 
-			System.out.println("old_guess[Q] :"+old_guess[Q]+"  Utils.getGuessMap(question) :"+Utils.getGuessMap(question));
+//			System.out.println("old_guess[Q] :"+old_guess[Q]+"  Utils.getGuessMap(question) :"+Utils.getGuessMap(question));
 			Double diff_G = Operations.substractDouble(Utils.getGuessMap(question), old_guess[Q]);
 			Double denomDiff_G = Operations.addDouble(old_guess[Q], Utils.getGuessMap(question));
 			//System.out.println("denomDiff_G "+denomDiff_G+" = "+old_guess[Q]+" + "+Utils.getGuessMap(question));
 			Double change_G = Operations.divideDouble(diff_G, denomDiff_G);
 			//System.out.println("sum_guess "+sum_guess+" = "+sum_guess+" + "+change_G);
 			sum_guess = Operations.addDouble(sum_guess, change_G);
-			System.out.println();
+//			System.out.println();
 		}
 		 //System.out.println("LChange = "+sum_Learn+ "  "+Double.valueOf(total_KCs));
 		 //System.out.println("GChange = "+sum_guess+ "  "+Double.valueOf(total_Q));

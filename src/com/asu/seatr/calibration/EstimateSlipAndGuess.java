@@ -42,6 +42,8 @@ public class EstimateSlipAndGuess {
 							
 						}
 						
+	//					System.out.println(" AllMastered " + AllMastered);
+						
 						SlipDenominator = Operations.addDouble(SlipDenominator, AllMastered);
 						GuessDenominator = Operations.addDouble(GuessDenominator, Operations.substractDouble((double) 1, AllMastered));
 						if(Utils.getAnswer(S, T) == 0){
@@ -57,6 +59,10 @@ public class EstimateSlipAndGuess {
 					}
 				}
 			}
+			
+//			System.out.println(" Q " + Q + " SlipNumerator " + SlipNumerator + " SlipDenominator " + SlipDenominator);
+//			System.out.println(" Q " + Q + " GuessNumerator " + GuessNumerator + " GuessDenominator " + GuessDenominator);
+			
 			Utils.setSlipMap(Q,  Operations.divideDouble(SlipNumerator, SlipDenominator));
 			Utils.setGuessMap(Q, Operations.divideDouble(GuessNumerator, GuessDenominator));
 		}

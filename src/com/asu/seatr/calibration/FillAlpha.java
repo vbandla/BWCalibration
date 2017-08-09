@@ -15,6 +15,8 @@ public class FillAlpha {
 
 	public static void fillAlpha(){
 		
+		
+		
 		int NS = GlobalConstants.total_Students;
 		int NK = GlobalConstants.total_KCs;
 		

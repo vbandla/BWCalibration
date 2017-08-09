@@ -93,42 +93,8 @@ public class SimulateDataBase {
 		}*/
 
 		
+		initalizeAlphaAlpha2BetaBestMapper();
 		
-		// ************** MAP - S K T I ***************************
-		for (int St = 0; St < GlobalConstants.total_Students; St++) {
-			int S = Utils.getStudent(St);
-			HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> inner_KcTI_Alpha_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
-			HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> inner_KcTI_Alpha2_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
-			HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> inner_KcTI_Beta_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
-			HashMap<Integer, HashMap<Integer, Double>> inner_KcT_Best_Map = new HashMap<Integer, HashMap<Integer, Double>>();
-			for (int K = 0; K < GlobalConstants.total_KCs; K++) {
-				int Kc = Utils.getKc(K);
-				HashMap<Integer, HashMap<Integer, Double>> inner_TI_Alpha_Map = new HashMap<Integer, HashMap<Integer, Double>>();
-				HashMap<Integer, HashMap<Integer, Double>> inner_TI_Alpha2_Map = new HashMap<Integer, HashMap<Integer, Double>>();
-				HashMap<Integer, HashMap<Integer, Double>> inner_TI_Beta_Map = new HashMap<Integer, HashMap<Integer, Double>>();
-				HashMap<Integer, Double> inner_TI_Best_Map = new HashMap<Integer, Double>();
-				
-				
-				
-				for (int T = 0; T <= Utils.getLast(S); T++) {
-					HashMap<Integer, Double> inner_I_Alpha_Map = new HashMap<Integer, Double>();
-					HashMap<Integer, Double> inner_I_Alpha2_Map = new HashMap<Integer, Double>();
-					HashMap<Integer, Double> inner_I_Beta_Map = new HashMap<Integer, Double>();
-				
-					
-					inner_TI_Alpha_Map.put(T, inner_I_Alpha_Map);
-					inner_TI_Alpha2_Map.put(T, inner_I_Alpha2_Map);
-					inner_TI_Beta_Map.put(T, inner_I_Beta_Map);
-					
-				}
-				inner_KcTI_Alpha_Map.put(Kc, inner_TI_Alpha_Map);
-				inner_KcTI_Alpha2_Map.put(Kc, inner_TI_Alpha2_Map);
-				inner_KcTI_Beta_Map.put(Kc, inner_TI_Beta_Map);
-				inner_KcT_Best_Map.put(Kc, inner_TI_Best_Map);
-				
-			}
-			Utils.initalizeAlphaAlpha2BetaBestMap(S, inner_KcTI_Alpha_Map, inner_KcTI_Alpha2_Map, inner_KcTI_Beta_Map, inner_KcT_Best_Map);
-		}
 		
 		
 		// ************** MAP - S K COMPETENCE ***************************
@@ -185,6 +151,47 @@ public class SimulateDataBase {
 			
 		}
 	}
+	
+	// ************** MAP - S K T I ***************************
+			public static void initalizeAlphaAlpha2BetaBestMapper(){
+				
+				for (int St = 0; St < GlobalConstants.total_Students; St++) {
+					int S = Utils.getStudent(St);
+					HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> inner_KcTI_Alpha_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
+					HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> inner_KcTI_Alpha2_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
+					HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>> inner_KcTI_Beta_Map = new HashMap<Integer, HashMap<Integer, HashMap<Integer, Double>>>();
+					HashMap<Integer, HashMap<Integer, Double>> inner_KcT_Best_Map = new HashMap<Integer, HashMap<Integer, Double>>();
+					for (int K = 0; K < GlobalConstants.total_KCs; K++) {
+						int Kc = Utils.getKc(K);
+						HashMap<Integer, HashMap<Integer, Double>> inner_TI_Alpha_Map = new HashMap<Integer, HashMap<Integer, Double>>();
+						HashMap<Integer, HashMap<Integer, Double>> inner_TI_Alpha2_Map = new HashMap<Integer, HashMap<Integer, Double>>();
+						HashMap<Integer, HashMap<Integer, Double>> inner_TI_Beta_Map = new HashMap<Integer, HashMap<Integer, Double>>();
+						HashMap<Integer, Double> inner_TI_Best_Map = new HashMap<Integer, Double>();
+						
+						
+						
+						for (int T = 0; T <= Utils.getLast(S); T++) {
+							HashMap<Integer, Double> inner_I_Alpha_Map = new HashMap<Integer, Double>();
+							HashMap<Integer, Double> inner_I_Alpha2_Map = new HashMap<Integer, Double>();
+							HashMap<Integer, Double> inner_I_Beta_Map = new HashMap<Integer, Double>();
+						
+							
+							inner_TI_Alpha_Map.put(T, inner_I_Alpha_Map);
+							inner_TI_Alpha2_Map.put(T, inner_I_Alpha2_Map);
+							inner_TI_Beta_Map.put(T, inner_I_Beta_Map);
+							
+						}
+						inner_KcTI_Alpha_Map.put(Kc, inner_TI_Alpha_Map);
+						inner_KcTI_Alpha2_Map.put(Kc, inner_TI_Alpha2_Map);
+						inner_KcTI_Beta_Map.put(Kc, inner_TI_Beta_Map);
+						inner_KcT_Best_Map.put(Kc, inner_TI_Best_Map);
+						
+					}
+					Utils.initalizeAlphaAlpha2BetaBestMap(S, inner_KcTI_Alpha_Map, inner_KcTI_Alpha2_Map, inner_KcTI_Beta_Map, inner_KcT_Best_Map);
+				}
+				
+			}
+			
 	
 	
 	
