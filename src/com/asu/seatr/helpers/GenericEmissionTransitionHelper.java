@@ -35,21 +35,22 @@ public class GenericEmissionTransitionHelper {
 		else{
 			
 			A = AllOtherMastered4beta(studentId, Q, kc, T);
+			//System.out.println("A value: "+A);
 			if(Utils.simulategetSetAnswer(studentId, Q) == 1){
-				
+				//System.out.println("Ans: 1");
 				double A_Multiply_OneMinusSlip = Operations.multiplyDouble(A, Operations.substractDouble((double)1, Utils.getSlipMap(Q)));
 				double Guess_multiply_oneMinusA = Operations.multiplyDouble(Utils.getGuessMap(Q), Operations.substractDouble((double)1, A));
 				double add_A_Multiply_OneMinusSlip_Guess_multiply_oneMinusA = Operations.addDouble(A_Multiply_OneMinusSlip, Guess_multiply_oneMinusA);
-				
+				//System.out.println(add_A_Multiply_OneMinusSlip_Guess_multiply_oneMinusA+" = "+A_Multiply_OneMinusSlip+"+"+Guess_multiply_oneMinusA);
 				return add_A_Multiply_OneMinusSlip_Guess_multiply_oneMinusA;
 			}
 			
 			else{
-				
+				//System.out.println("Ans: 0");
 				double A_multiply_Slip = Operations.multiplyDouble(A, Utils.getSlipMap(Q));
 				double oneMinusGuess_multiply_oneMinusA = Operations.multiplyDouble(Operations.substractDouble((double)1, Utils.getGuessMap(Q)), Operations.substractDouble((double)1, A));
 				double add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA = Operations.substractDouble(A_multiply_Slip, oneMinusGuess_multiply_oneMinusA);
-				
+				//System.out.println(add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA+" = "+A_multiply_Slip+"-"+oneMinusGuess_multiply_oneMinusA);
 				return add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA;
 			}
 			
@@ -99,7 +100,7 @@ public class GenericEmissionTransitionHelper {
 	
 	
 	public static Double Emission4alpha(int studentId, int kc, int T, int I){
-		
+		//System.out.println("Emission4alpha");
 		int Q = 0;
 		double A = 0;
 		
@@ -121,21 +122,23 @@ public class GenericEmissionTransitionHelper {
 		else{
 			
 			A = AllOtherMastered4alpha(studentId, Q, kc, T);
+			//System.out.println("A : "+A+" Utils.getGuessMap(Q):"+Utils.getGuessMap(Q)+"  Utils.getSlipMap(Q):"+Utils.getSlipMap(Q));
 			if(Utils.simulategetSetAnswer(studentId, Q) == 1){
-				
+				//System.out.println("Ans: 1");
 				double A_Multiply_OneMinusSlip = Operations.multiplyDouble(A, Operations.substractDouble((double)1, Utils.getSlipMap(Q)));
 				double Guess_multiply_oneMinusA = Operations.multiplyDouble(Utils.getGuessMap(Q), Operations.substractDouble((double)1, A));
 				double add_A_Multiply_OneMinusSlip_Guess_multiply_oneMinusA = Operations.addDouble(A_Multiply_OneMinusSlip, Guess_multiply_oneMinusA);
-				
+				//System.out.println(add_A_Multiply_OneMinusSlip_Guess_multiply_oneMinusA+" = "+A_Multiply_OneMinusSlip+"+"+Guess_multiply_oneMinusA);
 				return add_A_Multiply_OneMinusSlip_Guess_multiply_oneMinusA;
 			}
 			
 			else{
+				//System.out.println("Ans: 0");
 				
 				double A_multiply_Slip = Operations.multiplyDouble(A, Utils.getSlipMap(Q));
 				double oneMinusGuess_multiply_oneMinusA = Operations.multiplyDouble(Operations.substractDouble((double)1, Utils.getGuessMap(Q)), Operations.substractDouble((double)1, A));
 				double add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA = Operations.addDouble(A_multiply_Slip, oneMinusGuess_multiply_oneMinusA);
-				
+				//System.out.println(add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA+" = "+A_multiply_Slip+"+"+oneMinusGuess_multiply_oneMinusA);
 				return add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA;
 			}
 			
@@ -152,7 +155,7 @@ public static Double AllOtherMastered4alpha(int studentId, int Q, int kc, int T)
 		
 		ArrayList<Integer> kcList = Utils.getQuestionMatrix(Q);
 		if(kcList == null){
-			System.out.println(" kcList is null ");
+			//System.out.println(" kcList is null ");
 		}
 		for (int KcIndex = 0; KcIndex < kcList.size(); KcIndex++) {
 			int OtherK = kcList.get(KcIndex);
