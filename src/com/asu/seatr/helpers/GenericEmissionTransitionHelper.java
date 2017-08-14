@@ -134,7 +134,7 @@ public class GenericEmissionTransitionHelper {
 				
 				double A_multiply_Slip = Operations.multiplyDouble(A, Utils.getSlipMap(Q));
 				double oneMinusGuess_multiply_oneMinusA = Operations.multiplyDouble(Operations.substractDouble((double)1, Utils.getGuessMap(Q)), Operations.substractDouble((double)1, A));
-				double add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA = Operations.substractDouble(A_multiply_Slip, oneMinusGuess_multiply_oneMinusA);
+				double add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA = Operations.addDouble(A_multiply_Slip, oneMinusGuess_multiply_oneMinusA);
 				
 				return add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA;
 			}
