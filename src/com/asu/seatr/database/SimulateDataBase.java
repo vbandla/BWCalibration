@@ -46,11 +46,12 @@ public class SimulateDataBase {
 
 		// LAST
 		// set of Q answered by student
-		HashMap<Integer, Integer> question_AQ_Map = new HashMap<Integer, Integer>();
-		HashMap<Integer, Integer> answer_AC_Map = new HashMap<Integer, Integer>();
+		
 		
 		for (int st = 0; st < GlobalConstants.total_Students; st++) {
 			int id = st;
+			HashMap<Integer, Integer> question_AQ_Map = new HashMap<Integer, Integer>();
+			HashMap<Integer, Integer> answer_AC_Map = new HashMap<Integer, Integer>();
 			HashMap<Integer, Integer> inner_setAnswer = new HashMap<Integer, Integer>();
 			int numberOfQuestionsAttempted =/* r.nextInt((*/GlobalConstants.total_Questions /*- 1) + 1) + 1*/;
 			Set<Integer> generated = new LinkedHashSet<Integer>();
@@ -68,10 +69,32 @@ public class SimulateDataBase {
 				answer_AC_Map.put(A, correct);
 				Utils.setAnswer(st, answer_AC_Map);
 				question_AQ_Map.put(A, Q);
+				//System.out.println("setQuestion "+st+" "+A+" "+Q);
 				Utils.setQuestion(st, question_AQ_Map);
+				//System.out.println("getQuestion ("+st+","+A+") "+Utils.getQuestion(st, A));
+				//System.out.println(st+" "+A+" "+Q+" = "+correct);
+				System.out.println("1 SAGAR getAnswer_S_A_Q("+st+","+A+","+Utils.getQuestion(st, A)+")"+Utils.getAnswer(st, A));
 			}
-			Utils.simulateInitalizeSetAnswer(id,inner_setAnswer);
+			//Utils.simulateInitalizeSetAnswer(id,inner_setAnswer);
+			
+			
 		}
+		
+		/*System.out.println("----------------------------------------------------");
+		for (int Qi = 0; Qi < GlobalConstants.total_Questions ; Qi++) {
+			int Q = Utils.getQuestion(Qi);
+			for (int st2 = 0; st2 < GlobalConstants.total_Students; st2++) {
+				int S = Utils.getStudent(st2);
+				for (int T = 1; T <= Utils.getLast(S); T++) {
+					//if (Q == Utils.getQuestion(S, T)) {
+						//System.out.println("getQuestion ("+S+","+T+") "+Utils.getQuestion(S, T));
+						System.out.println("2 SAGAR getAnswer_S_A_Q("+S+","+T+","+Utils.getQuestion(S, T)+")"+Utils.getAnswer(S, T));
+					//}
+				}
+			}
+			System.out.println("----------------------------------------------------");
+		//}
+*/		
 		
 		
 /*		// ************** MAP - S K A ***************************
@@ -112,7 +135,7 @@ public class SimulateDataBase {
 	}
 
 	// SIMULATION
-	public static void setInitialCompetence() {
+	/*public static void setInitialCompetence() {
 		for (int St = 0; St < GlobalConstants.total_Students; St++) {
 			int S = Utils.getStudent(St);
 			for (int K = 0; K < GlobalConstants.total_KCs; K++) {
@@ -121,9 +144,9 @@ public class SimulateDataBase {
 			}
 		}
 		OKCompetence();
-	}
+	}*/
 
-	public static void OKCompetence() {
+	/*public static void OKCompetence() {
 		for (int St = 0; St < GlobalConstants.total_Students; St++) {
 			int S = Utils.getStudent(St);
 			for(int q=0;q<GlobalConstants.total_Questions;q++){
@@ -142,6 +165,7 @@ public class SimulateDataBase {
 				}
 				//System.out.println("simulateSetAnswer : "+A+" >= "+randomC+" = "+ans);
 				Utils.simulateSetAnswer(S, Q, ans);
+				System.out.println("2  SAGAR simulateGetAnswer_S_Q ("+S+","+Q+") :"+Utils.simulategetSetAnswer(S, Q));
 				for(int kc =0;kc<KCs.size();kc++){
 					int KC = Utils.getKc(kc);
 					Double value = Utils.getCompetence(S,KC)+Utils.getLearnMap(KC)*(1-Utils.getCompetence(S,KC));
@@ -150,7 +174,9 @@ public class SimulateDataBase {
 			}
 			
 		}
-	}
+		
+		System.out.println("----------------------------------------------------------------------------------------------");
+	}*/
 	
 	// ************** MAP - S K T I ***************************
 			public static void initalizeAlphaAlpha2BetaBestMapper(){

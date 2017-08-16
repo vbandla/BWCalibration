@@ -196,7 +196,7 @@ public class Calibration {
 		 printRandomParameters();
 		
 		//SIMULATION
-		SimulateDataBase.setInitialCompetence();
+		//SimulateDataBase.setInitialCompetence();
 	}
 
 	private static void printRandomParameters() {
@@ -322,7 +322,7 @@ public class Calibration {
 
 		// MySQLConnection.SetConnection();
 		System.out.println("CALIBRATION.....................");
-		PrintStream o = new PrintStream(new File("C:/Users/bandl/Downloads/CalibrationTest/CALIB.txt"));
+		PrintStream o = new PrintStream(new File("C:/Users/lkusnoor/Downloads/RA/CALIB3.txt"));
 		System.setOut(o);
 		// SetDB
 		// setDatabase();

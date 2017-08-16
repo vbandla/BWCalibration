@@ -153,7 +153,7 @@ public class Utils {
 
 	public static int getQuestion(int S, int A) {
 		HashMap<Integer, Integer> innerAQ_map = question_SA_Map.get(S);
-		// System.out.println("get SQA :"+S+" "+innerAQ_map.get(A)+" "+A);
+		//System.out.println("get SQA :"+S+" "+innerAQ_map.get(A)+" "+A);
 		return innerAQ_map.get(A);
 	}
 
@@ -237,7 +237,7 @@ public class Utils {
 	}
 
 	public static void setSlipMap(int question, Double value) {
-		//System.out.println("setSlipMap :" + question + " " + value);
+		//System.out.println("setSlipMap :" + question+" "+ value);
 		Q_QM_Slip_Guess_map.get(question).put(GlobalConstants.Slip, value.toString());
 	}
 
@@ -428,17 +428,19 @@ public class Utils {
 	// Datastructure to implement SetAnswer
 		static HashMap<Integer, HashMap<Integer, Integer>> setAnswer_Map = new HashMap<Integer, HashMap<Integer, Integer>>();
 		// Competence
-		public static void simulateInitalizeSetAnswer(int S, HashMap<Integer, Integer> inner_SetAnswer_Map) {
+		/*public static void simulateInitalizeSetAnswer(int S, HashMap<Integer, Integer> inner_SetAnswer_Map) {
 			setAnswer_Map.put(S, inner_SetAnswer_Map);
 		}
 
 		public static void simulateSetAnswer(int s, int q, int i) {
+	//		System.out.println(" simulateSetAnswer s " + s+ " q "+ q +" i " +i);
 			setAnswer_Map.get(s).put(q, i);
 		}
 
 		public static Integer simulategetSetAnswer(int s, int q) {
+//			System.out.println(" simulategetSetAnswer " +setAnswer_Map.get(s).get(q));
 			return setAnswer_Map.get(s).get(q);
-		}
+		}*/
 		
 		public static void clearMapsofAlphaBetaBest(){
 			
