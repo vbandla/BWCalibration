@@ -32,31 +32,27 @@ public class EstimateSlipAndGuess {
 				
 				for (int T = 1; T <= Utils.getLast(S); T++) {
 					if (Q == Utils.getQuestion(S, T)) {
-						
 						Double AllMastered = new Double(1.0);
-						
 						ArrayList<Integer> KCs = Utils.getQuestionMatrix(Q);
 						for (int list_K = 0; list_K < KCs.size(); list_K++) {
-							
 							AllMastered = Operations.multiplyDouble(Utils.getFetchBest(S, KCs.get(list_K), T), AllMastered);
-							
 						}
-						
+						//System.out.println(" AllMastered " + AllMastered);
 						SlipDenominator = Operations.addDouble(SlipDenominator, AllMastered);
 						GuessDenominator = Operations.addDouble(GuessDenominator, Operations.substractDouble((double) 1, AllMastered));
+						//System.out.println("1 SAGAR getAnswer_S_A_Q("+S+","+T+","+Utils.getQuestion(S, T)+")"+Utils.getAnswer(S, T));
 						if(Utils.getAnswer(S, T) == 0){
-							
 							SlipNumerator = Operations.addDouble(SlipNumerator, AllMastered);
-							
-						}
-						else{
-							
+						}else{
 							GuessNumerator = Operations.addDouble(GuessNumerator, Operations.substractDouble((double) 1, AllMastered));
-							
 						}
 					}
 				}
 			}
+			
+			//System.out.println(" Q " + Q + " SlipNumerator " + SlipNumerator + " SlipDenominator " + SlipDenominator);
+			//System.out.println(" Q " + Q + " GuessNumerator " + GuessNumerator + " GuessDenominator " + GuessDenominator);
+			//System.out.println("SETTING SLIP and GUESS");
 			Utils.setSlipMap(Q,  Operations.divideDouble(SlipNumerator, SlipDenominator));
 			Utils.setGuessMap(Q, Operations.divideDouble(GuessNumerator, GuessDenominator));
 		}
