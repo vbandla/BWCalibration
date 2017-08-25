@@ -101,14 +101,14 @@ public class Calibration {
 		
 		for (int Q = 0; Q < total_Q; Q++) {
 			int question = Utils.getQuestion(Q);
-			//System.out.println("sum_slip :"+sum_slip);
-//			System.out.println("old_slip[Q] :"+old_slip[Q]+"  Utils.getSlipMap(question) :"+Utils.getSlipMap(question));
+			System.out.println("sum_slip :"+sum_slip);
+			System.out.println("old_slip[Q] :"+old_slip[Q]+"  Utils.getSlipMap(question) :"+Utils.getSlipMap(question));
 			Double diff_S = Operations.substractDouble(Utils.getSlipMap(question),old_slip[Q]);
-			//System.out.println(" diff_S :"+ Utils.getSlipMap(question)+"-"+old_slip[Q]+"="+diff_S);
+			System.out.println(" diff_S :"+ Utils.getSlipMap(question)+"-"+old_slip[Q]+"="+diff_S);
 			Double denomDiff_S = Operations.addDouble(old_slip[Q], Utils.getSlipMap(question));
-			//System.out.println(" denomDiff_S :"+denomDiff_S);
+			System.out.println(" denomDiff_S :"+denomDiff_S);
 			Double change_S = Operations.divideDouble(diff_S, denomDiff_S);
-			//System.out.println(" change_S = diff_S/denomDiff_S :"+change_S);
+			System.out.println(" change_S = diff_S/denomDiff_S :"+change_S);
 			sum_slip = Operations.addDouble(sum_slip, change_S);
 
 //			System.out.println("old_guess[Q] :"+old_guess[Q]+"  Utils.getGuessMap(question) :"+Utils.getGuessMap(question));
@@ -116,13 +116,13 @@ public class Calibration {
 			Double denomDiff_G = Operations.addDouble(old_guess[Q], Utils.getGuessMap(question));
 			//System.out.println("denomDiff_G "+denomDiff_G+" = "+old_guess[Q]+" + "+Utils.getGuessMap(question));
 			Double change_G = Operations.divideDouble(diff_G, denomDiff_G);
-			//System.out.println("sum_guess "+sum_guess+" = "+sum_guess+" + "+change_G);
+			System.out.println("sum_guess "+sum_guess+" = "+sum_guess+" + "+change_G);
 			sum_guess = Operations.addDouble(sum_guess, change_G);
-//			System.out.println();
+			System.out.println();
 		}
 		 //System.out.println("LChange = "+sum_Learn+ "  "+Double.valueOf(total_KCs));
 		 //System.out.println("GChange = "+sum_guess+ "  "+Double.valueOf(total_Q));
-		//System.out.println("SChange = "+sum_slip+ "  "+Double.valueOf(total_Q));
+		System.out.println("SChange = "+sum_slip+ "  "+Double.valueOf(total_Q));
 		IMChange = Operations.divideDouble(sum_initalMaster, Double.valueOf(total_KCs));
 		LChange = Operations.divideDouble(sum_Learn, Double.valueOf(total_KCs));
 		SChange = Operations.divideDouble(sum_slip, Double.valueOf(total_Q));
@@ -322,7 +322,7 @@ public class Calibration {
 
 		// MySQLConnection.SetConnection();
 		System.out.println("CALIBRATION.....................");
-		PrintStream o = new PrintStream(new File("C:/Users/lkusnoor/Downloads/RA/CALIB3.txt"));
+		PrintStream o = new PrintStream(new File("F:/RA/CALIB3.txt"));
 		System.setOut(o);
 		// SetDB
 		// setDatabase();

@@ -78,6 +78,7 @@ public class GenericEmissionTransitionHelper {
 		
 		double resultMastered4beta = 0;
 		
+		//System.out.println("studentId"+studentId+"OtherK"+OtherK+"T"+T+"1");
 		double numeratorBeta  = BetaHelperFunction.Beta(studentId, OtherK, T, 1);  
 		double denominatorPart1 = Operations.multiplyDouble(BetaHelperFunction.Beta(studentId, OtherK, T, 1), Utils.getInitialMasteryMap(OtherK));
 		double denominatorPart2 = Operations.multiplyDouble(BetaHelperFunction.Beta(studentId, OtherK, T, 0), Operations.substractDouble((double)1 , Utils.getInitialMasteryMap(OtherK)));

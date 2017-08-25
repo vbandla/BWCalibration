@@ -14,7 +14,7 @@ public class SimulateDataBase {
 
 		GlobalConstants.total_KCs = 1;
 		GlobalConstants.total_Questions = 10;
-		GlobalConstants.total_Students = 3;
+		GlobalConstants.total_Students = 10;
 		Random r = new Random();
 
 		// KC
@@ -73,7 +73,7 @@ public class SimulateDataBase {
 				Utils.setQuestion(st, question_AQ_Map);
 				//System.out.println("getQuestion ("+st+","+A+") "+Utils.getQuestion(st, A));
 				//System.out.println(st+" "+A+" "+Q+" = "+correct);
-				System.out.println("1 SAGAR getAnswer_S_A_Q("+st+","+A+","+Utils.getQuestion(st, A)+")"+Utils.getAnswer(st, A));
+				//System.out.println("1 SAGAR getAnswer_S_A_Q("+st+","+A+","+Utils.getQuestion(st, A)+")"+Utils.getAnswer(st, A));
 			}
 			//Utils.simulateInitalizeSetAnswer(id,inner_setAnswer);
 			

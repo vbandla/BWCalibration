@@ -67,7 +67,7 @@ public class DatabaseResponse {
 		
 		//int i=0;
 		
-		System.out.println("total Student-------------------------------------------- :" + GlobalConstants.total_Students);
+		//System.out.println("total Student-------------------------------------------- :" + GlobalConstants.total_Students);
 
 		
 //********************************************CORRECTION**************************************************************		
@@ -82,7 +82,7 @@ public class DatabaseResponse {
 			qResultCount++;
 		}
 		
-		System.out.println("total Questions--------------------------------------------:" + GlobalConstants.total_Questions);
+		//System.out.println("total Questions--------------------------------------------:" + GlobalConstants.total_Questions);
 	/*	for (int j = 0; j < GlobalConstants.total_Questions; j++) {
 			System.out.println(Utils.getQuestion(j));
 		}*/
@@ -93,7 +93,7 @@ public class DatabaseResponse {
 			Utils.setKc(i, kcResult.get(i));
 			Utils.setKcMap(kcResult.get(i));
 		}
-		System.out.println("total Kcs-----------------------------" + GlobalConstants.total_KCs);
+		//System.out.println("total Kcs-----------------------------" + GlobalConstants.total_KCs);
 		/*for (int j = 0; j < GlobalConstants.total_KCs; j++) {
 			 System.out.println(Utils.getKc(j));
 		}*/
@@ -105,9 +105,9 @@ public class DatabaseResponse {
 			// System.out.println("question_knowledge_component " + q + " " + kc);
 			Utils.setQuestionMatrix(q, kc);
 		}
-		System.out.println(GlobalConstants.total_Questions + " count " + i);
+		/*System.out.println(GlobalConstants.total_Questions + " count " + i);
 		System.out.println("QMATRIX-------------------------------------------");
-		for (int j = 0; j < GlobalConstants.total_Questions; j++) {
+*/		for (int j = 0; j < GlobalConstants.total_Questions; j++) {
 			int q = Utils.getQuestion(j);
 			Utils.setQMatrixMap(q, Utils.getQuestionMatrix(q));
 			// System.out.println(q +" { "+ Utils.getQMatrixMap(q)+" }");
@@ -117,7 +117,7 @@ public class DatabaseResponse {
 		HashMap<Integer, Integer> question_AQ_Map = new HashMap<Integer, Integer>();
 		HashMap<Integer, Integer> answer_AC_Map = new HashMap<Integer, Integer>();
 		int y = 0;
-		System.out.println("LAST--------------------------");
+		//System.out.println("LAST--------------------------");
 		for (Object[] result : lastResult) {
 			y++;
 			Integer id = (Integer) result[0];
@@ -140,15 +140,15 @@ public class DatabaseResponse {
 		}
 
 		//************** MAP - S K A ***************************
-		System.out.println("current size of heap in bytes  :"+Runtime.getRuntime().totalMemory());
+		/*System.out.println("current size of heap in bytes  :"+Runtime.getRuntime().totalMemory());
 		System.out.println("maximum size of heap in bytes  :"+Runtime.getRuntime().maxMemory());
 		System.out.println("amount of free memory within the heap in bytes  :"+Runtime.getRuntime().freeMemory());
-		for (int St = 0; St < GlobalConstants.total_Students; St++) {
+*/		for (int St = 0; St < GlobalConstants.total_Students; St++) {
 			//System.out.println(St+" / "+GlobalConstants.total_Students);
-			System.out.println("current size of heap in bytes  :"+Runtime.getRuntime().totalMemory());
+/*			System.out.println("current size of heap in bytes  :"+Runtime.getRuntime().totalMemory());
 			System.out.println("maximum size of heap in bytes  :"+Runtime.getRuntime().maxMemory());
 			System.out.println("amount of free memory within the heap in bytes  :"+Runtime.getRuntime().freeMemory());
-			int S = Utils.getStudent(St);
+*/			int S = Utils.getStudent(St);
 			HashMap<Integer, HashMap<Integer, Double>> inner_KcA_Forward_Map = new HashMap<Integer, HashMap<Integer, Double>>();
 			HashMap<Integer, HashMap<Integer, Double>> inner_KcA_Backward_Map = new HashMap<Integer, HashMap<Integer, Double>>();
 			HashMap<Integer, HashMap<Integer, Double>> inner_KcA_Best_Map = new HashMap<Integer, HashMap<Integer, Double>>();

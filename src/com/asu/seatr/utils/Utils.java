@@ -265,7 +265,7 @@ public class Utils {
 	public static ArrayList<Integer> getQMatrixMap(int question) {
 		list.clear();
 		String s = Q_QM_Slip_Guess_map.get(question).get(GlobalConstants.QMatrix);
-		System.out.println("string s " + s);
+		//System.out.println("string s " + s);
 		String[] arr = s.split("\t");
 		for (int i = 0; i < arr.length; i++) {
 			list.add(Integer.parseInt(arr[i]));
@@ -343,7 +343,7 @@ public class Utils {
 	 * Best
 	 */
 	public static void updateBest(int S, int K, int A, Double bestValue) {
-		System.out.println(" S:"+S+" K:"+K+" A"+A+" bestValue"+bestValue);
+		//System.out.println(" S:"+S+" K:"+K+" A"+A+" bestValue"+bestValue);
 		best_outerStudentKcMap.get(S).get(K).put(A, bestValue);
 	}
 
@@ -355,9 +355,9 @@ public class Utils {
 	 * fetch_alpha
 	 */
 	public static void updateFetchAlpha(int S, int K, int T, int I, Double alpha) {
-		System.out.println(" S:"+S+" K:"+K+" T"+T+" alpha: "+alpha);
+		//System.out.println(" S:"+S+" K:"+K+" T"+T+" alpha: "+alpha);
 		if(T == 0){
-			System.out.println(" T == 0" );
+			//System.out.println(" T == 0" );
 			fetch_alpha_outerStudentId_S_Map.get(S).get(K).put(0, fetch_alpha_inner_I_stateMap).put(I, alpha);
 		}
 		else {
@@ -387,7 +387,7 @@ public class Utils {
 	 * fetch_beta
 	 */
 	public static void updateFetchBeta(int S, int K, int T, int I, Double beta) {
-		System.out.println(" S:"+S+" K:"+K+" T"+T+" beta: "+beta);
+		//System.out.println(" S:"+S+" K:"+K+" T"+T+" beta: "+beta);
 		fetch_beta_outerStudentId_S_Map.get(S).get(K).get(T).put(I, beta);
 	}
 
@@ -400,7 +400,7 @@ public class Utils {
 	 */
 	
 	public static void updateFetchBest(int S, int K, int T, Double best) {
-		System.out.println(" S:"+S+" K:"+K+" T"+T+" best: "+best);
+		//System.out.println(" S:"+S+" K:"+K+" T"+T+" best: "+best);
 		fetch_best_outerStudentId_S_Map.get(S).get(K).put(T, best);
 	}
 	

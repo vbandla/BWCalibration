@@ -1,4 +1,4 @@
-package com.asu.seatr.utils;
+ package com.asu.seatr.utils;
 
 public class GlobalConstants {
 	//TODO get data from DB and update below values

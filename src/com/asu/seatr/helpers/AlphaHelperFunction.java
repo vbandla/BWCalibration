@@ -43,7 +43,7 @@ public class AlphaHelperFunction {
 			
 			emission = GenericEmissionTransitionHelper.Emission4alpha(studentId, kc, T, I);
 			alpha2 = Alpha2(studentId, kc, T, I);
-			System.out.println("emission * alpha2 = "+emission+" "+alpha2);
+			//System.out.println("emission * alpha2 = "+emission+" "+alpha2);
 			return Operations.multiplyDouble(emission, alpha2).doubleValue();
 			
 		}
