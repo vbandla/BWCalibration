@@ -1,6 +1,7 @@
 package com.asu.seatr.calibration;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.asu.seatr.helpers.BetaHelperFunction;
 import com.asu.seatr.utils.GlobalConstants;
@@ -14,6 +15,7 @@ public class FillBeta {
 
 	
 	public static void fillBeta(){
+		System.out.println("fillBeta.........");
 		int NS = GlobalConstants.total_Students;
 		int NK = GlobalConstants.total_KCs;
 	
@@ -55,6 +57,8 @@ public class FillBeta {
 	}
 	
 }
+
+
 
 
 

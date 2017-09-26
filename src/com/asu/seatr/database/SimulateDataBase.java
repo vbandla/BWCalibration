@@ -1,6 +1,5 @@
 package com.asu.seatr.database;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Random;
@@ -11,10 +10,10 @@ import com.asu.seatr.utils.Utils;
 
 public class SimulateDataBase {
 	public static void setAllStudentsData() {
-
+		//System.out.println("SimulateDataBase.........");
 		GlobalConstants.total_KCs = 1;
-		GlobalConstants.total_Questions = 10;
-		GlobalConstants.total_Students = 10;
+		GlobalConstants.total_Questions = 40;
+		GlobalConstants.total_Students = 100;
 		Random r = new Random();
 
 		// KC
@@ -61,11 +60,15 @@ public class SimulateDataBase {
 			}
 			for(Integer Q : generated){
 				inner_setAnswer.put(Q, 0);
-				int correct = (Math.random() < 0.5) ? 0 : 1;
+				int correct = (Math.random() < 0.5) ? 0 :1;
 				int count = Utils.getLast(id);
 				count++;
 				Utils.setLast(id, count);
 				int A = count;
+				/*if(A==1)correct=1;
+				if(A==2)correct=0;
+				if(A==3)correct=0;
+				if(A==4)correct=1;*/
 				answer_AC_Map.put(A, correct);
 				Utils.setAnswer(st, answer_AC_Map);
 				question_AQ_Map.put(A, Q);

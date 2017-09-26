@@ -11,7 +11,7 @@ import com.asu.seatr.utils.Utils;
 public class EstimateInitialMastery {
 	
 	public static void estimateIntialMastery(){
-		
+		//System.out.println("estimateIntialMastery.........");
 		int NK = GlobalConstants.total_KCs;
 		int NS = GlobalConstants.total_Students;
 		

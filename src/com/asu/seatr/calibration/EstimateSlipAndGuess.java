@@ -13,7 +13,7 @@ import com.asu.seatr.utils.Utils;
 public class EstimateSlipAndGuess {
 
 	public static void estimateSlipAndGuess(){
-		
+		System.out.println("estimateSlipAndGuess.........");
 		int NQ = GlobalConstants.total_Questions;
 		int NS = GlobalConstants.total_Students;
 		int NK = GlobalConstants.total_KCs;
@@ -38,9 +38,10 @@ public class EstimateSlipAndGuess {
 							AllMastered = Operations.multiplyDouble(Utils.getFetchBest(S, KCs.get(list_K), T), AllMastered);
 						}
 						//System.out.println(" AllMastered " + AllMastered);
+						//SlipDenominator=Operations.addDouble(SlipDenominator, (double) 1);
 						SlipDenominator = Operations.addDouble(SlipDenominator, AllMastered);
 						GuessDenominator = Operations.addDouble(GuessDenominator, Operations.substractDouble((double) 1, AllMastered));
-						//System.out.println("1 SAGAR getAnswer_S_A_Q("+S+","+T+","+Utils.getQuestion(S, T)+")"+Utils.getAnswer(S, T));
+						//System.out.println("2 SAGAR getAnswer_S_A_Q("+S+","+T+","+Utils.getQuestion(S, T)+")"+Utils.getAnswer(S, T));
 						if(Utils.getAnswer(S, T) == 0){
 							SlipNumerator = Operations.addDouble(SlipNumerator, AllMastered);
 						}else{

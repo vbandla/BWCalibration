@@ -10,6 +10,10 @@ import java.util.HashMap;
  * @author Lakshmisagar Kusnoor created on May 15, 2017
  *
  */
+/**
+ * @author lkusnoor
+ *
+ */
 public class Utils {
 
 	private static int[] mKC = new int[GlobalConstants.total_KCs];
@@ -148,12 +152,13 @@ public class Utils {
 	 * Question
 	 */
 	public static void setQuestion(int s, HashMap<Integer, Integer> question_AQ_Map) {
+		//System.out.println("Set SQA :"+s+" "+question_AQ_Map);
 		question_SA_Map.put(s, question_AQ_Map);
 	}
 
 	public static int getQuestion(int S, int A) {
 		HashMap<Integer, Integer> innerAQ_map = question_SA_Map.get(S);
-		//System.out.println("get SQA :"+S+" "+innerAQ_map.get(A)+" "+A);
+		//System.out.println("get SAQ :"+S+" "+A+" "+innerAQ_map.get(A));
 		return innerAQ_map.get(A);
 	}
 
@@ -242,6 +247,7 @@ public class Utils {
 	}
 
 	public static Double getSlipMap(int question) {
+		//System.out.println("getSlipMap :" + question+" "+ Q_QM_Slip_Guess_map.get(question).get(GlobalConstants.Slip));
 		return new Double(Q_QM_Slip_Guess_map.get(question).get(GlobalConstants.Slip));
 	}
 
@@ -356,14 +362,25 @@ public class Utils {
 	 */
 	public static void updateFetchAlpha(int S, int K, int T, int I, Double alpha) {
 		//System.out.println(" S:"+S+" K:"+K+" T"+T+" alpha: "+alpha);
-		if(T == 0){
-			//System.out.println(" T == 0" );
+		/*if(T == 0){
+			System.out.println(" T == 0" );
+			System.out.println("alpha "+alpha+" fetch_alpha_inner_I_stateMap"+fetch_alpha_inner_I_stateMap);
 			fetch_alpha_outerStudentId_S_Map.get(S).get(K).put(0, fetch_alpha_inner_I_stateMap).put(I, alpha);
 		}
 		else {
 			fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).put(I, alpha);
-		}
+		}*/
 		
+		
+		/*System.out.println("newCalib i :"+I );
+		if(I==0){
+			System.out.println("newCalib pai"+I+": "+Utils.getInitialMasteryMap(K));
+		}else{
+			System.out.println("newCalib pai"+I+": "+Operations.substractDouble((double)1,Utils.getInitialMasteryMap(K)));
+		}*/
+		
+		fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).put(I, alpha);
+		//System.out.println("updateAlpha S:"+S+" K:"+K+" T"+T+" I: "+I+" = "+fetch_alpha_outerStudentId_S_Map.get(S).get(K).get(T).get(I));
 	}
 
 	public static Double getFetchAlpha(int S, int K, int T, int I) {
@@ -374,7 +391,7 @@ public class Utils {
 	 * fetch_alpha2
 	 */
 	public static void updateFetchAlpha2(int S, int K, int T, int I, Double alpha) {
-		//System.out.println(" S: "+S+" K: "+K+" T "+T+" alpha2: "+alpha);
+		//System.out.println("updateFetchAlpha2 S: "+S+" K: "+K+" T "+T+" I "+I+ " alpha2: "+alpha);
 		fetch_alpha2_outerStudentId_S_Map.get(S).get(K).get(T).put(I, alpha);
 	}
 
@@ -387,7 +404,7 @@ public class Utils {
 	 * fetch_beta
 	 */
 	public static void updateFetchBeta(int S, int K, int T, int I, Double beta) {
-		//System.out.println(" S:"+S+" K:"+K+" T"+T+" beta: "+beta);
+		//System.out.println("updateFetchBeta S:"+S+" K:"+K+" T"+T+"I"+I+" beta: "+beta);
 		fetch_beta_outerStudentId_S_Map.get(S).get(K).get(T).put(I, beta);
 	}
 
@@ -400,11 +417,12 @@ public class Utils {
 	 */
 	
 	public static void updateFetchBest(int S, int K, int T, Double best) {
-		//System.out.println(" S:"+S+" K:"+K+" T"+T+" best: "+best);
+		//System.out.println("updateFetchBest  S:"+S+" K:"+K+" T"+T+" best: "+best);
 		fetch_best_outerStudentId_S_Map.get(S).get(K).put(T, best);
 	}
 	
 	public static Double getFetchBest(int S, int K, int T) {
+		//System.out.println("getFetchBest  S:"+S+" K:"+K+" T"+T+" best: "+fetch_best_outerStudentId_S_Map.get(S).get(K).get(T));
 		return fetch_best_outerStudentId_S_Map.get(S).get(K).get(T);
 	}
 	

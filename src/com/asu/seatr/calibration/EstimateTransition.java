@@ -14,7 +14,7 @@ import com.asu.seatr.utils.Utils;
 public class EstimateTransition {
 	
 	public static void estimateTransition(){
-		
+		//System.out.println("estimateTransition.........");
 		int NK = GlobalConstants.total_KCs;
 		
 		for (int K = 0; K < GlobalConstants.total_KCs; K++) {
@@ -30,26 +30,26 @@ public class EstimateTransition {
 					ArrayList<Integer> KCs = Utils.getQuestionMatrix(Q);
 					double KN = KCs.size();
 					
-					double numPart1 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S,Kc,T,0), GenericEmissionTransitionHelper.Transition(S,Kc,T+1,0,1));
-					double numPart2 = Operations.multiplyDouble(BetaHelperFunction.Beta(S,Kc,T+1,1), GenericEmissionTransitionHelper.Emission4beta(S,Kc,T,1));
+					double numPart1 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S,Kc,T,0,"estimateTransition"), GenericEmissionTransitionHelper.Transition(S,Kc,T,0,1));
+					double numPart2 = Operations.multiplyDouble(BetaHelperFunction.Beta(S,Kc,T+1,1), GenericEmissionTransitionHelper.Emission4beta(S,Kc,T+1,1));
 					
 					double Num = Operations.multiplyDouble(numPart1, numPart2);
 					
-					double denomPart1 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S,Kc,T,1), BetaHelperFunction.Beta(S,Kc,T,1));
-					double denomPart2 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S,Kc,T,0), BetaHelperFunction.Beta(S,Kc,T,0));
-					
+					double denomPart1 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S,Kc,T,1,"estimateTransition"), BetaHelperFunction.Beta(S,Kc,T,1));
+					double denomPart2 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S,Kc,T,0,"estimateTransition"), BetaHelperFunction.Beta(S,Kc,T,0));
+					//System.out.println("denomPart1 :"+denomPart1+" denomPart2:"+denomPart2);
 					double Denom = Operations.addDouble(denomPart1, denomPart2);
-					
 					double NumeratorPart1 = Operations.divideDouble(Num, Denom);
 					double NumeratorPart2 = Operations.multiplyDouble(KN, NumeratorPart1);
 					
 					LearnNumerator = Operations.addDouble(LearnNumerator, NumeratorPart2);
 					LearnDenominator = Operations.addDouble(LearnDenominator, Operations.substractDouble((double)1, Utils.getFetchBest(S, Kc, T)));
-					
+					//System.out.println("LearnNumerator :"+LearnNumerator+"  LearnDenominator:"+LearnDenominator+" Utils.getFetchBest(S, Kc, T): "+Utils.getFetchBest(S, Kc, T)+" 1-fetch:"+Operations.substractDouble((double)1, Utils.getFetchBest(S, Kc, T)));
+
 				}
 			}	
-			
-			Utils.setLearnMap(Kc, Operations.divideDouble(LearnNumerator, LearnDenominator));
+			if(LearnDenominator==0)Utils.setLearnMap(Kc, 1.0);
+			else Utils.setLearnMap(Kc, Operations.divideDouble(LearnNumerator, LearnDenominator));
 		}	
 		
 	}

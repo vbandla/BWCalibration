@@ -9,7 +9,7 @@ import com.asu.seatr.utils.Utils;
 public class BetaHelperFunction {
 
 public static Double Beta(int studentId, int kc, int T, int I){
-		
+	//System.out.println("Beta.........");
 		Double result = null;
 		double fetchBeta = 0;
 		result = Utils.getFetchBeta(studentId, kc, T, I);
@@ -27,7 +27,7 @@ public static Double Beta(int studentId, int kc, int T, int I){
 	}
 
 public static Double BetaCalc(int studentId, int kc, int T, int I){
-	
+	//System.out.println("BetaCalc.........");
 	double betaCalc = 0;
 	if(T == Utils.getLast(studentId)){
 		return (double)1;

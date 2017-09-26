@@ -13,7 +13,7 @@ import com.asu.seatr.utils.Utils;
 public class GenericEmissionTransitionHelper {
 	
 	public static Double Emission4beta(int studentId, int kc, int T, int I){
-		
+		//System.out.println("Emission4beta.........");
 		int Q = 0;
 		double A = 0;
 		
@@ -58,7 +58,7 @@ public class GenericEmissionTransitionHelper {
 	}
 	
 	public static Double AllOtherMastered4beta(int studentId, int Q, int kc, int T){
-		
+		//System.out.println("AllOtherMastered4beta.........");
 		double result = 1;
 		
 		ArrayList<Integer> kcList = Utils.getQuestionMatrix(Q);
@@ -75,15 +75,15 @@ public class GenericEmissionTransitionHelper {
 	}
 	
 	public static Double Mastered4beta(int studentId, int OtherK, int T){
-		
+		//System.out.println("Mastered4beta.........");
 		double resultMastered4beta = 0;
 		
 		//System.out.println("studentId"+studentId+"OtherK"+OtherK+"T"+T+"1");
-		double numeratorBeta  = BetaHelperFunction.Beta(studentId, OtherK, T, 1);  
+		double numeratorBeta  = Operations.multiplyDouble(BetaHelperFunction.Beta(studentId, OtherK, T, 1), Utils.getInitialMasteryMap(OtherK));  
 		double denominatorPart1 = Operations.multiplyDouble(BetaHelperFunction.Beta(studentId, OtherK, T, 1), Utils.getInitialMasteryMap(OtherK));
 		double denominatorPart2 = Operations.multiplyDouble(BetaHelperFunction.Beta(studentId, OtherK, T, 0), Operations.substractDouble((double)1 , Utils.getInitialMasteryMap(OtherK)));
 		double denominatorFinal = Operations.addDouble(denominatorPart1, denominatorPart2);
-		
+		                          
 		resultMastered4beta = Operations.divideDouble(numeratorBeta, denominatorFinal);
 		return resultMastered4beta;
 		
@@ -99,11 +99,11 @@ public class GenericEmissionTransitionHelper {
 	
 	
 	public static Double Emission4alpha(int studentId, int kc, int T, int I){
-		
+		//System.out.println("Emission4alpha.........");
 		int Q = 0;
 		double A = 0;
 		
-		
+		//System.out.println(" studentId :"+studentId+" T :"+T);
 		Q = Utils.getQuestion(studentId, T);
 		//System.out.println("Q "+Q);
 		if(I == 0){
@@ -158,12 +158,12 @@ public class GenericEmissionTransitionHelper {
 	
 	
 public static Double AllOtherMastered4alpha(int studentId, int Q, int kc, int T){
-		
+	//System.out.println("AllOtherMastered4alpha.........");
 		double result = 1;
 		
 		ArrayList<Integer> kcList = Utils.getQuestionMatrix(Q);
 		if(kcList == null){
-			System.out.println(" kcList is null ");
+			//System.out.println(" kcList is null ");
 		}
 		for (int KcIndex = 0; KcIndex < kcList.size(); KcIndex++) {
 			int OtherK = kcList.get(KcIndex);
@@ -178,9 +178,9 @@ public static Double AllOtherMastered4alpha(int studentId, int Q, int kc, int T)
 	}
 
 public static Double Mastered4alpha(int studentId, int OtherK, int T){
-	
+	//System.out.println("Mastered4alpha.........");
 	double resultMastered4alpha = 0;
-	
+	//System.out.println("Mastered4alpha T:"+T);
 	double numerator = AlphaHelperFunction.Alpha2(studentId, OtherK, T, 1);
 	double denominatorPart1 = AlphaHelperFunction.Alpha2(studentId, OtherK, T, 1);
 	double denominatorPart2 = AlphaHelperFunction.Alpha2(studentId, OtherK, T, 0);
@@ -196,7 +196,7 @@ public static Double Mastered4alpha(int studentId, int OtherK, int T){
 
 	
 	public static Double Transition(int studentId, int kc, int T, int I, int J){
-		
+		//System.out.println("Transition.........");
 		double L = 0;
 		double lengthOfQmatrix = 0;
 		double learn = 0;
