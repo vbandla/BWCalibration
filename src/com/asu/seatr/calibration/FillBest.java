@@ -23,7 +23,6 @@ public class FillBest {
 			    
 				for (int T = 1; T <= Utils.getLast(S); T++) {
 				
-				
 					int innerKc = Utils.getKc(K);
 					
 					double Numerator = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S, innerKc, T, 1,"fillBest"), BetaHelperFunction.Beta(S,innerKc,T,1));
@@ -34,6 +33,8 @@ public class FillBest {
 					double fillbest = Operations.divideDouble(Numerator, denominatorFinal);
 					System.out.println("a1b1/a1b1+a0b0 :"+Numerator+"/"+denominatorFinal);
 					Utils.updateFetchBest(S, innerKc, T, fillbest);
+					int Q = Utils.getQuestion(S, T);
+					System.out.println("IM :"+Utils.getInitialMasteryMap(innerKc)+"  Slip: "+Utils.getSlipMap(Q)+" Guess :"+Utils.getGuessMap(Q) + "  Lear :"+Utils.getLearnMap(innerKc));
 					System.out.println("Answer = "+Utils.getAnswer(S, T)+"  Best["+T+"] :"+ " mastered = "+fillbest+"  not mastered = "+Operations.substractDouble((double)1, fillbest));
 					System.out.println();
 				}	
