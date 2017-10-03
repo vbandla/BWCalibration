@@ -11,7 +11,7 @@ import com.asu.seatr.utils.Utils;
 public class SimulateDataBase {
 	public static void setAllStudentsData() {
 		//System.out.println("SimulateDataBase.........");
-		GlobalConstants.total_KCs = 1;
+		GlobalConstants.total_KCs = 2;
 		GlobalConstants.total_Questions = 40;
 		GlobalConstants.total_Students = 100;
 		Random r = new Random();

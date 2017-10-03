@@ -25,9 +25,9 @@ public class FillBest {
 				
 					int innerKc = Utils.getKc(K);
 					
-					double Numerator = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S, innerKc, T, 1,"fillBest"), BetaHelperFunction.Beta(S,innerKc,T,1));
-					double denominatorPart1 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S, innerKc, T, 0,"fillBest"), BetaHelperFunction.Beta(S,innerKc,T,0));
-					System.out.println("Alpha(S, innerKc, T, 0) :"+AlphaHelperFunction.Alpha(S, innerKc, T, 0,"fillBest")+" Beta(S,innerKc,T,0)"+BetaHelperFunction.Beta(S,innerKc,T,0));
+					double Numerator = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S, innerKc, T, 1,"fillBest"), BetaHelperFunction.Beta(S,innerKc,T,1,"estimateTransition"));
+					double denominatorPart1 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S, innerKc, T, 0,"fillBest"), BetaHelperFunction.Beta(S,innerKc,T,0,"estimateTransition"));
+					System.out.println("Alpha(S, innerKc, T, 0) :"+AlphaHelperFunction.Alpha(S, innerKc, T, 0,"fillBest")+" Beta(S,innerKc,T,0)"+BetaHelperFunction.Beta(S,innerKc,T,0,"estimateTransition"));
 					double denominatorFinal = Operations.addDouble(Numerator, denominatorPart1);
 					
 					double fillbest = Operations.divideDouble(Numerator, denominatorFinal);

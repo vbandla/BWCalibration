@@ -13,7 +13,8 @@ import com.asu.seatr.utils.Utils;
 public class GenericEmissionTransitionHelper {
 	
 	public static Double Emission4beta(int studentId, int kc, int T, int I){
-		//System.out.println("Emission4beta.........");
+		//System.out.println();
+		//System.out.println("  Emission4beta.........");
 		int Q = 0;
 		double A = 0;
 		
@@ -22,11 +23,12 @@ public class GenericEmissionTransitionHelper {
 		if(I == 0){
 			
 			if(Utils.getAnswer(studentId, T) == 1){
+				//System.out.print("  Utils.getGuessMap(Q) :"+Utils.getGuessMap(Q));
 				return Utils.getGuessMap(Q);
 			}
 			
 			else{
-				
+				//System.out.print(" 1-guess :"+Operations.substractDouble((double)1, Utils.getGuessMap(Q)));
 				return Operations.substractDouble((double)1, Utils.getGuessMap(Q));
 			}
 		}
@@ -39,7 +41,7 @@ public class GenericEmissionTransitionHelper {
 				double A_Multiply_OneMinusSlip = Operations.multiplyDouble(A, Operations.substractDouble((double)1, Utils.getSlipMap(Q)));
 				double Guess_multiply_oneMinusA = Operations.multiplyDouble(Utils.getGuessMap(Q), Operations.substractDouble((double)1, A));
 				double add_A_Multiply_OneMinusSlip_Guess_multiply_oneMinusA = Operations.addDouble(A_Multiply_OneMinusSlip, Guess_multiply_oneMinusA);
-				
+				//System.out.print("  (A*(1-Slip[Q]) + Guess[Q]*(1-A)) :"+add_A_Multiply_OneMinusSlip_Guess_multiply_oneMinusA+"   =  (A*(1-Slip[Q]) ="+A_Multiply_OneMinusSlip+"  Guess[Q]*(1-A) ="+Guess_multiply_oneMinusA);
 				return add_A_Multiply_OneMinusSlip_Guess_multiply_oneMinusA;
 			}
 			
@@ -47,8 +49,8 @@ public class GenericEmissionTransitionHelper {
 				
 				double A_multiply_Slip = Operations.multiplyDouble(A, Utils.getSlipMap(Q));
 				double oneMinusGuess_multiply_oneMinusA = Operations.multiplyDouble(Operations.substractDouble((double)1, Utils.getGuessMap(Q)), Operations.substractDouble((double)1, A));
-				double add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA = Operations.substractDouble(A_multiply_Slip, oneMinusGuess_multiply_oneMinusA);
-				
+				double add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA = Operations.addDouble(A_multiply_Slip, oneMinusGuess_multiply_oneMinusA);
+				//System.out.print("  (A*Slip[Q] + (1-Guess[Q])*(1-A)) :"+add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA+"   =  A*Slip[Q] ="+A_multiply_Slip+"  (1-Guess[Q])*(1-A) ="+oneMinusGuess_multiply_oneMinusA);
 				return add_A_multiply_Slip_oneMinusGuess_multiply_oneMinusA;
 			}
 			
@@ -79,9 +81,9 @@ public class GenericEmissionTransitionHelper {
 		double resultMastered4beta = 0;
 		
 		//System.out.println("studentId"+studentId+"OtherK"+OtherK+"T"+T+"1");
-		double numeratorBeta  = Operations.multiplyDouble(BetaHelperFunction.Beta(studentId, OtherK, T, 1), Utils.getInitialMasteryMap(OtherK));  
-		double denominatorPart1 = Operations.multiplyDouble(BetaHelperFunction.Beta(studentId, OtherK, T, 1), Utils.getInitialMasteryMap(OtherK));
-		double denominatorPart2 = Operations.multiplyDouble(BetaHelperFunction.Beta(studentId, OtherK, T, 0), Operations.substractDouble((double)1 , Utils.getInitialMasteryMap(OtherK)));
+		double numeratorBeta  = Operations.multiplyDouble(BetaHelperFunction.Beta(studentId, OtherK, T, 1,"Mastered4beta"), Utils.getInitialMasteryMap(OtherK));  
+		double denominatorPart1 = Operations.multiplyDouble(BetaHelperFunction.Beta(studentId, OtherK, T, 1,"Mastered4beta"), Utils.getInitialMasteryMap(OtherK));
+		double denominatorPart2 = Operations.multiplyDouble(BetaHelperFunction.Beta(studentId, OtherK, T, 0,"Mastered4beta"), Operations.substractDouble((double)1 , Utils.getInitialMasteryMap(OtherK)));
 		double denominatorFinal = Operations.addDouble(denominatorPart1, denominatorPart2);
 		                          
 		resultMastered4beta = Operations.divideDouble(numeratorBeta, denominatorFinal);

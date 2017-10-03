@@ -34,28 +34,7 @@ public class AlphaHelperFunction {
 		//System.out.println();
 		//emission = GenericEmissionTransitionHelper.Emission4alpha(studentId, kc, T, I);
 		//if(I==0)System.out.println("Emmision b"+I+"(y"+T+") "+emission);
-		if(T == 1){
-			//System.out.println();
-			//System.out.println("newCalib 1 y"+T+" Answered - "+Utils.getAnswer(studentId, T));
-			emission = GenericEmissionTransitionHelper.Emission4alpha(studentId, kc, T, I);
-			//System.out.println("newCalib 1 Emmision b"+I+"(y"+T+") "+emission);
-			if(I == 1){
-				//System.out.println("pai"+I+":"+Utils.getInitialMasteryMap(kc));
-				//System.out.println("Final-1 newCalib 1  Answered - "+Utils.getAnswer(studentId, T)+" b"+I+"(y"+T+") "+Operations.multiplyDouble(emission, Utils.getInitialMasteryMap(kc)));
-				//System.out.println();
-				//Utils.updateFetchAlpha2(studentId, kc, T, I, Operations.multiplyDouble(emission, Utils.getInitialMasteryMap(kc)));
-				return Operations.multiplyDouble(emission, Utils.getInitialMasteryMap(kc));
-			}
-			else{
-				//System.out.println("pai"+I+":"+Operations.substractDouble( (double) 1, Utils.getInitialMasteryMap(kc)));
-			//	System.out.println("aplha("+T+") I"+I+" :"+Operations.multiplyDouble(emission,Operations.substractDouble( (double) 1, Utils.getInitialMasteryMap(kc))));
-				//System.out.println();
-				//Utils.updateFetchAlpha2(studentId, kc, T, I, Operations.multiplyDouble(emission,Operations.substractDouble( (double) 1, Utils.getInitialMasteryMap(kc))));
-				return Operations.multiplyDouble(emission,Operations.substractDouble( (double) 1, Utils.getInitialMasteryMap(kc)));
-			}
-		}
-		
-		else{
+	
 			//System.out.println("AlphaCalc  T:"+T);
 			//System.out.println("newCalib 2 y"+T+" Answered -"+Utils.getAnswer(studentId, T));
 			emission = GenericEmissionTransitionHelper.Emission4alpha(studentId, kc, T, I);
@@ -66,13 +45,34 @@ public class AlphaHelperFunction {
 			//System.out.println("newCalib 2 emission * alpha2 = "+emission+" * "+alpha2);
 			//if(I==0)System.out.println("aplha("+T+") I"+I+" :"+Operations.multiplyDouble(emission, alpha2));
 			return Operations.multiplyDouble(emission, alpha2).doubleValue();
-		}
 	}
 	
 	public static Double Alpha2(int studentId, int kc, int T, int I){
 		//System.out.println("Alpha2.........S: "+studentId+" K: "+kc+" T "+T+" I "+I);
 		Double result = null;
 		double fetch2 = 0;
+		if(T == 1){
+			//System.out.println();
+			//System.out.println("newCalib 1 y"+T+" Answered - "+Utils.getAnswer(studentId, T));
+			//emission = GenericEmissionTransitionHelper.Emission4alpha(studentId, kc, T, I);
+			//System.out.println("newCalib 1 Emmision b"+I+"(y"+T+") "+emission);
+			if(I == 1){
+				//System.out.println("pai"+I+":"+Utils.getInitialMasteryMap(kc));
+				//System.out.println("Final-1 newCalib 1  Answered - "+Utils.getAnswer(studentId, T)+" b"+I+"(y"+T+") "+Operations.multiplyDouble(emission, Utils.getInitialMasteryMap(kc)));
+				//System.out.println();
+				//Utils.updateFetchAlpha2(studentId, kc, T, I, Operations.multiplyDouble(emission, Utils.getInitialMasteryMap(kc)));
+				return Operations.multiplyDouble(/*emission*/(double)1, Utils.getInitialMasteryMap(kc));
+			}
+			else{
+				//System.out.println("pai"+I+":"+Operations.substractDouble( (double) 1, Utils.getInitialMasteryMap(kc)));
+			//	System.out.println("aplha("+T+") I"+I+" :"+Operations.multiplyDouble(emission,Operations.substractDouble( (double) 1, Utils.getInitialMasteryMap(kc))));
+				//System.out.println();
+				//Utils.updateFetchAlpha2(studentId, kc, T, I, Operations.multiplyDouble(emission,Operations.substractDouble( (double) 1, Utils.getInitialMasteryMap(kc))));
+				return Operations.multiplyDouble(/*emission*/(double)1,Operations.substractDouble( (double) 1, Utils.getInitialMasteryMap(kc)));
+			}
+		}
+		
+		else{
 		result = Utils.getFetchAlpha2(studentId, kc, T, I);
 		//System.out.println("Alpha2.......result :"+result);
 		if(result == null){
@@ -86,6 +86,7 @@ public class AlphaHelperFunction {
 		}
 		
 		return result.doubleValue();
+		}
 		
 	}
 	

@@ -39,8 +39,8 @@ public class FillBeta {
 					int innerKc = Utils.getKc(K);
 					if (KCs.contains(innerKc)) {
 						
-						BetaHelperFunction.Beta(S,innerKc,T,1);
-						BetaHelperFunction.Beta(S,innerKc,T,0);
+						BetaHelperFunction.Beta(S,innerKc,T,1,"fillBeta");
+						BetaHelperFunction.Beta(S,innerKc,T,0,"fillBeta");
 					}
 					
 					else{

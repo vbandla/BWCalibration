@@ -31,12 +31,12 @@ public class EstimateTransition {
 					double KN = KCs.size();
 					
 					double numPart1 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S,Kc,T,0,"estimateTransition"), GenericEmissionTransitionHelper.Transition(S,Kc,T,0,1));
-					double numPart2 = Operations.multiplyDouble(BetaHelperFunction.Beta(S,Kc,T+1,1), GenericEmissionTransitionHelper.Emission4beta(S,Kc,T+1,1));
+					double numPart2 = Operations.multiplyDouble(BetaHelperFunction.Beta(S,Kc,T+1,1,"estimateTransition"), GenericEmissionTransitionHelper.Emission4beta(S,Kc,T+1,1));
 					
 					double Num = Operations.multiplyDouble(numPart1, numPart2);
 					
-					double denomPart1 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S,Kc,T,1,"estimateTransition"), BetaHelperFunction.Beta(S,Kc,T,1));
-					double denomPart2 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S,Kc,T,0,"estimateTransition"), BetaHelperFunction.Beta(S,Kc,T,0));
+					double denomPart1 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S,Kc,T,1,"estimateTransition"), BetaHelperFunction.Beta(S,Kc,T,1,"estimateTransition"));
+					double denomPart2 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S,Kc,T,0,"estimateTransition"), BetaHelperFunction.Beta(S,Kc,T,0,"estimateTransition"));
 					//System.out.println("denomPart1 :"+denomPart1+" denomPart2:"+denomPart2);
 					double Denom = Operations.addDouble(denomPart1, denomPart2);
 					double NumeratorPart1 = Operations.divideDouble(Num, Denom);
