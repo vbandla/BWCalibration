@@ -195,7 +195,6 @@ public class Calibration {
 		}
 		// System.out.println("STOP");
 		 printRandomParameters();
-		
 		//SIMULATION
 		//SimulateDataBase.setInitialCompetence();
 	}
@@ -343,7 +342,7 @@ public class Calibration {
 		// setAnswerValues();
 		// setQuestionValues();
 
-		while (climb < 10) {
+		while (climb < 5) {
 			fillRandomParameters();
 			/*if*/while (climbOnce().compareTo(Double.valueOf(0.1)) != -1) {}
 				updateNewPrameters();
@@ -385,6 +384,9 @@ public class Calibration {
 				PrintResult();
 			}
 		/*}*/
+		o = new PrintStream(new File("C:/Users/lkusnoor/Downloads/CALIB4.txt"));
+		System.setOut(o);
+		PrintResult();
 	}
 
 }
