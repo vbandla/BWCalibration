@@ -14,7 +14,7 @@ import com.asu.seatr.utils.Utils;
 public class EstimateTransition {
 	
 	public static void estimateTransition(){
-		//System.out.println("estimateTransition.........");
+		System.out.println("estimateTransition.........");
 		int NK = GlobalConstants.total_KCs;
 		
 		for (int K = 0; K < GlobalConstants.total_KCs; K++) {
@@ -44,7 +44,7 @@ public class EstimateTransition {
 					
 					LearnNumerator = Operations.addDouble(LearnNumerator, NumeratorPart2);
 					LearnDenominator = Operations.addDouble(LearnDenominator, Operations.substractDouble((double)1, Utils.getFetchBest(S, Kc, T)));
-					//System.out.println("LearnNumerator :"+LearnNumerator+"  LearnDenominator:"+LearnDenominator+" Utils.getFetchBest(S, Kc, T): "+Utils.getFetchBest(S, Kc, T)+" 1-fetch:"+Operations.substractDouble((double)1, Utils.getFetchBest(S, Kc, T)));
+					System.out.println("LearnNumerator :"+LearnNumerator+"  LearnDenominator:"+LearnDenominator+" Utils.getFetchBest(S, Kc, T): "+Utils.getFetchBest(S, Kc, T)+" 1-fetch:"+Operations.substractDouble((double)1, Utils.getFetchBest(S, Kc, T)));
 
 				}
 			}	

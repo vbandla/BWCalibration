@@ -90,14 +90,14 @@ public class Calibration {
 
 			//System.out.println("old_Learn[K] :"+old_Learn[K]+"  Utils.getLearnMap(Kc) :"+Utils.getLearnMap(Kc));
 			Double diff_L = Operations.substractDouble(Utils.getLearnMap(Kc), old_Learn[K]);
-			// System.out.println("diff_L :"+diff_L+" = "+old_Learn[K]+"  "+Utils.getLearnMap(Kc));
+			 System.out.println("diff_L :"+diff_L+" = "+old_Learn[K]+"  "+Utils.getLearnMap(Kc));
 			Double denomDiff_L = Operations.addDouble(old_Learn[K], Utils.getLearnMap(Kc));
 			//System.out.println("diff_L :"+diff_L+"denomDiff_L :"+denomDiff_L);
 			Double change_L = Operations.divideDouble(diff_L, denomDiff_L);
 			//System.out.println("change_L :"+change_L);
 			sum_Learn = Operations.addDouble(sum_Learn, change_L);
 //			System.out.println();
-		    //System.out.println("sum_Learn = sum_Learn+change_L "+sum_Learn);
+		   // System.out.println("sum_Learn = sum_Learn+change_L "+sum_Learn);
 		}
 		System.out.println("sum_slip :"+sum_slip);
 		for (int Q = 0; Q < total_Q; Q++) {
@@ -316,8 +316,40 @@ public class Calibration {
 			System.out.println(" Slip :" + list.get(2));
 			System.out.println(" Guess :" + list.get(3));
 		}
+		
+		printHillTopsDifference();
 	}
 
+	
+	private static void printHillTopsDifference(){
+		int size = climbMap.size();
+		System.out.println();
+		System.out.println("printHillTopsDifference ");
+		for(int i=1;i<=size;i++){
+			ArrayList<Double> list1 = climbMap.get(i);
+			for(int j=i+1;j<=size;j++){
+				ArrayList<Double> list2 = climbMap.get(j);
+				Double IM_DIFF = Math.abs(Operations.substractDouble(list1.get(0), list2.get(0)));
+				Double L_DIFF = Math.abs(Operations.substractDouble(list1.get(1), list2.get(1)));
+				Double S_DIFF = Math.abs(Operations.substractDouble(list1.get(2), list2.get(2)));
+				Double G_DIFF = Math.abs(Operations.substractDouble(list1.get(3), list2.get(3)));
+				
+				Double IM_Change = Operations.divideDouble(IM_DIFF,list1.get(0));
+				Double L_Change = Operations.divideDouble(L_DIFF,list1.get(1));
+				Double S_Change = Operations.divideDouble(S_DIFF,list1.get(2));
+				Double G_Change = Operations.divideDouble(G_DIFF,list1.get(3));
+				
+				if((Double.compare(IM_Change, (Double)0.1) <=0 ) && (Double.compare(L_Change, (Double)0.1) <=0 ) && (Double.compare(S_Change, (Double)0.1) <=0 ) && (Double.compare(G_Change, (Double)0.1) <=0 )){
+					System.out.println(i+ "  "+ list1);
+					System.out.println(j+ "  "+ list2);
+					System.out.println();
+				}
+				
+			}
+			
+		}
+	}
+	
 	public static void main(String[] args) throws FileNotFoundException {
 
 		// MySQLConnection.SetConnection();

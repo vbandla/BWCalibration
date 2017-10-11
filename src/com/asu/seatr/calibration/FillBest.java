@@ -20,9 +20,10 @@ public class FillBest {
 		for (int St = 0; St < NS; St++) {
 			int S = Utils.getStudent(St);
 
+			for (int K = 0; K < NK; K++) {
 			for (int T = 1; T <= Utils.getLast(S); T++) {
 				 
-				for (int K = 0; K < NK; K++) {
+			
 					
 					int innerKc = Utils.getKc(K);
 
