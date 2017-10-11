@@ -21,7 +21,9 @@ public class FillBest {
 			int S = Utils.getStudent(St);
 
 			for (int T = 1; T <= Utils.getLast(S); T++) {
+				 
 				for (int K = 0; K < NK; K++) {
+					
 					int innerKc = Utils.getKc(K);
 
 					double Numerator = Operations.multiplyDouble(
