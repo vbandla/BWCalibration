@@ -219,8 +219,8 @@ public static Double Mastered4alpha(int studentId, int OtherK, int T){
 			lengthOfQmatrix = Utils.getQuestionMatrix(Utils.getQuestion(studentId, T)).size();
 			//System.out.println("learn "+learn);
 			//System.out.println("lengthOfQmatrix "+lengthOfQmatrix);
-			L = Operations.divideDouble(learn, lengthOfQmatrix);
-			//L = learn;
+			//L = Operations.divideDouble(learn, lengthOfQmatrix);
+			L = learn;
 			if(J == 1){
 				//System.out.println("J "+J +"  L"+L);
 				return L;
