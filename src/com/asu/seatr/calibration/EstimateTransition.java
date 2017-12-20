@@ -58,7 +58,7 @@ public class EstimateTransition {
 					double Denom1 = Operations.addDouble(denomPart1, denomPart2);
 					double Denom2 = Operations.addDouble(denomPart3, denomPart4);
 					double Denom = Operations.addDouble(Denom1, Denom2);
-					Denom = Operations.addDouble(Num, Denom2);
+					//Denom = Operations.addDouble(Num, Denom2);
 					
 					double NumeratorPart1 = Operations.divideDouble(Num, Denom);
 					double NumeratorPart2 = Operations.multiplyDouble(KN, NumeratorPart1);

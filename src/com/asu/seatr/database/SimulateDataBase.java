@@ -59,7 +59,7 @@ public class SimulateDataBase {
 			}
 			for(Integer Q : generated){
 				inner_setAnswer.put(Q, 0);
-				int correct = /*(Math.random() < 0.5) ? 0 :1*/1;
+				int correct = (Math.random() < 0.5) ? 0 :1;
 				int count = Utils.getLast(id);
 				count++;
 				Utils.setLast(id, count);
