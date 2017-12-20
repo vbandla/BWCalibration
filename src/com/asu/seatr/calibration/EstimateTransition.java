@@ -29,7 +29,7 @@ public class EstimateTransition {
 					
 					int Q = Utils.getQuestion(S, T);
 					ArrayList<Integer> KCs = Utils.getQuestionMatrix(Q);
-					//double KN = KCs.size();
+					double KN = KCs.size();
 					
 					double numPart1 = Operations.multiplyDouble(AlphaHelperFunction.Alpha(S,Kc,T,0,"estimateTransition"), GenericEmissionTransitionHelper.Transition(S,Kc,T,0,1));
 					double numPart2 = Operations.multiplyDouble(BetaHelperFunction.Beta(S,Kc,T+1,1,"estimateTransition"), GenericEmissionTransitionHelper.Emission4beta(S,Kc,T+1,1));
@@ -61,9 +61,9 @@ public class EstimateTransition {
 					Denom = Operations.addDouble(Num, Denom2);
 					
 					double NumeratorPart1 = Operations.divideDouble(Num, Denom);
-					//double NumeratorPart2 = Operations.multiplyDouble(KN, NumeratorPart1);
+					double NumeratorPart2 = Operations.multiplyDouble(KN, NumeratorPart1);
 					
-					LearnNumerator = Operations.addDouble(LearnNumerator, NumeratorPart1);
+					LearnNumerator = Operations.addDouble(LearnNumerator, NumeratorPart2);
 					LearnDenominator = Operations.addDouble(LearnDenominator, Operations.substractDouble((double)1, Utils.getFetchBest(S, Kc, T)));
 					if(Kc==0 && Operations.divideDouble(LearnNumerator, LearnDenominator)>1)System.out.println("SAGAR LearnNumerator :"+LearnNumerator+"  LearnDenominator:"+LearnDenominator+" Utils.getFetchBest(S, Kc, T): "+Utils.getFetchBest(S, Kc, T)+" 1-fetch:"+Operations.substractDouble((double)1, Utils.getFetchBest(S, Kc, T)));
 

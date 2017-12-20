@@ -736,12 +736,12 @@ public class Calibration {
 				}
 				System.out.println();
 				System.out.println();
-				//PrintResult();
+				PrintResult();
 			}
 		
 		/*}*/
 		
-		//CalculateChangeInParams_BestAUC();
+		CalculateChangeInParams_BestAUC();
 		
 		
 		try {
