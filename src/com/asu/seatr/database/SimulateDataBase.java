@@ -11,9 +11,9 @@ import com.asu.seatr.utils.Utils;
 public class SimulateDataBase {
 	public static void setAllStudentsData() {
 		//System.out.println("SimulateDataBase.........");
-		GlobalConstants.total_KCs = 2;
-		GlobalConstants.total_Questions = 40;
-		GlobalConstants.total_Students = 5;
+		GlobalConstants.total_KCs = 25;
+		GlobalConstants.total_Questions = 25;
+		GlobalConstants.total_Students = 100;
 		Random r = new Random();
 
 		// KC
@@ -45,8 +45,7 @@ public class SimulateDataBase {
 
 		// LAST
 		// set of Q answered by student
-		
-		
+				
 		for (int st = 0; st < GlobalConstants.total_Students; st++) {
 			int id = st;
 			HashMap<Integer, Integer> question_AQ_Map = new HashMap<Integer, Integer>();
@@ -60,7 +59,7 @@ public class SimulateDataBase {
 			}
 			for(Integer Q : generated){
 				inner_setAnswer.put(Q, 0);
-				int correct = (Math.random() < 0.5) ? 0 :1;
+				int correct = /*(Math.random() < 0.5) ? 0 :1*/1;
 				int count = Utils.getLast(id);
 				count++;
 				Utils.setLast(id, count);
@@ -79,7 +78,6 @@ public class SimulateDataBase {
 				//System.out.println("1 SAGAR getAnswer_S_A_Q("+st+","+A+","+Utils.getQuestion(st, A)+")"+Utils.getAnswer(st, A));
 			}
 			//Utils.simulateInitalizeSetAnswer(id,inner_setAnswer);
-			
 			
 		}
 		
@@ -197,13 +195,10 @@ public class SimulateDataBase {
 						HashMap<Integer, HashMap<Integer, Double>> inner_TI_Beta_Map = new HashMap<Integer, HashMap<Integer, Double>>();
 						HashMap<Integer, Double> inner_TI_Best_Map = new HashMap<Integer, Double>();
 						
-						
-						
 						for (int T = 0; T <= Utils.getLast(S); T++) {
 							HashMap<Integer, Double> inner_I_Alpha_Map = new HashMap<Integer, Double>();
 							HashMap<Integer, Double> inner_I_Alpha2_Map = new HashMap<Integer, Double>();
 							HashMap<Integer, Double> inner_I_Beta_Map = new HashMap<Integer, Double>();
-						
 							
 							inner_TI_Alpha_Map.put(T, inner_I_Alpha_Map);
 							inner_TI_Alpha2_Map.put(T, inner_I_Alpha2_Map);
@@ -214,17 +209,11 @@ public class SimulateDataBase {
 						inner_KcTI_Alpha2_Map.put(Kc, inner_TI_Alpha2_Map);
 						inner_KcTI_Beta_Map.put(Kc, inner_TI_Beta_Map);
 						inner_KcT_Best_Map.put(Kc, inner_TI_Best_Map);
-						
 					}
+					
 					Utils.initalizeAlphaAlpha2BetaBestMap(S, inner_KcTI_Alpha_Map, inner_KcTI_Alpha2_Map, inner_KcTI_Beta_Map, inner_KcT_Best_Map);
 				}
 				
 			}
-			
-	
-	
-	
-	
-	
 	
 }

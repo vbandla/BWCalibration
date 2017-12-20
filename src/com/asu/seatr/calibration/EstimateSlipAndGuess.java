@@ -54,6 +54,7 @@ public class EstimateSlipAndGuess {
 			//System.out.println(" Q " + Q + " SlipNumerator " + SlipNumerator + " SlipDenominator " + SlipDenominator);
 			//System.out.println(" Q " + Q + " GuessNumerator " + GuessNumerator + " GuessDenominator " + GuessDenominator);
 			//System.out.println("SETTING SLIP and GUESS");
+			if(Q==0)System.out.println(" Slip[" + Q + "]  " + Operations.divideDouble(SlipNumerator, SlipDenominator));
 			Utils.setSlipMap(Q,  Operations.divideDouble(SlipNumerator, SlipDenominator));
 			Utils.setGuessMap(Q, Operations.divideDouble(GuessNumerator, GuessDenominator));
 		}

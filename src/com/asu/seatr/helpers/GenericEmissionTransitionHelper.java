@@ -216,16 +216,17 @@ public static Double Mastered4alpha(int studentId, int OtherK, int T){
 		else{
 			
 			learn = Utils.getLearnMap(kc);
-			lengthOfQmatrix = Utils.getQuestionMatrix(Utils.getQuestion(studentId, T)).size();
-			
-			L = Operations.divideDouble(learn, lengthOfQmatrix);
-			
+			//lengthOfQmatrix = Utils.getQuestionMatrix(Utils.getQuestion(studentId, T)).size();
+			//System.out.println("learn "+learn);
+			//System.out.println("lengthOfQmatrix "+lengthOfQmatrix);
+			//L = Operations.divideDouble(learn, lengthOfQmatrix);
+			L = learn;
 			if(J == 1){
-				
+				//System.out.println("J "+J +"  L"+L);
 				return L;
 			}
 			else{
-				
+				//System.out.println("J "+J +" 1-L"+Operations.substractDouble((double)1, L));
 				return Operations.substractDouble((double)1, L);
 			}
 		}
