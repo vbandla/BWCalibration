@@ -387,14 +387,63 @@ public class Calibration {
 		}
 	}
 
-	private static void CalculateROCCurve() throws IOException {
+	//START  7	Measure prediction error
+	private static Double Probability_of_correct(int Q,int S,int T){
+		Double AllMastered = new Double(1.0);
+		ArrayList<Integer> KCs = Utils.getQuestionMatrix(Q);
+		for (int list_K = 0; list_K < KCs.size(); list_K++) {
+			AllMastered = Operations.multiplyDouble(Utils.getFetchAlpha(S, KCs.get(list_K), T,1), AllMastered);
+		}
+		Double one_MinusSlip = Operations.substractDouble((double)1, Utils.getSlipMap(Q));
+		Double one_MinusallMastered = Operations.substractDouble((double)1, AllMastered);
+		Double AllMastered_Mul_one_MinusSlip = Operations.multiplyDouble(AllMastered, one_MinusSlip);
+		Double one_Minus_AllMastered_Mul_Guess = Operations.multiplyDouble(one_MinusallMastered, Utils.getGuessMap(Q));
 		
-		int[] TP = new int[11];
-		int[] FP = new int[11];
-		int P = 0;
+		return Operations.addDouble(AllMastered_Mul_one_MinusSlip,one_Minus_AllMastered_Mul_Guess);
+	}
+	//END  7	Measure prediction error
+	
+	private static void CalculateROCCurve() throws IOException {
+		//START  7	Measure prediction error
+		FillAlpha.fillAlpha();
+		int Npts = 25;
+		int Pos=0;
+		int Neg=0;
+		double[] TPR = new double[Npts];
+		double[] FPR = new double[Npts];
+		int[] TP = new int[Npts];
+		int[] FP = new int[Npts];
+		for (int St = 0; St < GlobalConstants.total_Students ; St++) {
+			int S = Utils.getStudent(St);
+			for (int T = 1; T <= Utils.getLast(S); T++) {
+				int Q = Utils.getQuestion(S, T);
+				Double P = Math.floor(Operations.multiplyDouble((double)Npts,Probability_of_correct(Q,S,T)));
+				for(int Threshold=0;Threshold<=P;Threshold++){
+					if(Utils.getAnswer(S, T)==1){
+						TP[Threshold]++;
+						Pos++; 	
+					}else{
+						FP[Threshold]++;
+						Neg++;
+					}
+				}
+			}
+		}
+		for(int Threshold=0;Threshold<Npts;Threshold++){
+			System.out.println("TP["+Threshold+"]    "+TP[Threshold]);
+			System.out.println("FP["+Threshold+"]    "+FP[Threshold]);
+			TPR[Threshold]=(double)((double)(TP[Threshold])/(double)(Pos));
+			FPR[Threshold]=(double)((double)(FP[Threshold])/(double)(Neg));
+			System.out.println("TPR["+Threshold+"]    "+TPR[Threshold]);
+			System.out.println("FPR["+Threshold+"]    "+FPR[Threshold]);
+		}
+		//END  7	Measure prediction error
+		
+		
+		
+/*		int P = 0;
 		int N = 0;
-		double[] TPR = new double[11];
-		double[] FPR = new double[11];
+		
 		//PrintStream o = new PrintStream(new File("C:/Users/lkusnoor/Downloads/CalculateROCCurve.txt"));
 		//System.setOut(o);
 		for (int Qi = 0; Qi < GlobalConstants.total_Questions ; Qi++) {
@@ -487,7 +536,7 @@ public class Calibration {
 			
 			FPR[i] = Operations.divideDouble((double)fp, (double)N);
 			System.out.print(FPR[i]+"  ");
-		}
+		}*/
 		System.out.println();
 		//o = new PrintStream(new File("C:/Users/lkusnoor/Downloads/CALIB3.txt"));
 		//System.setOut(o);
@@ -517,7 +566,7 @@ public class Calibration {
 			cellB1.setCellStyle(cellStyle);
 			double curAUC = 0;
 			
-			for(int i=0;i<11;i++){
+			for(int i=0;i<Npts;i++){
 				HSSFRow row = worksheet.createRow(rowIndex++);
 				HSSFCell fprcell = row.createCell(0);
 				fprcell.setCellValue(new Double(FPR[i]));
